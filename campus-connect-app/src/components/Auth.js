@@ -35,12 +35,12 @@ function Auth(){
     return (
         <>
             {
-                user ? (<>
+                user ? (<div className='p-10 bg-slate-300'>
                     <h1>{user.name}</h1>
                     <h1>{user.email}</h1>
                     <img src={user.photo} alt='none' referrerPolicy='no-referrer'/>
                     <button onClick={handleLogout}>Log out</button>
-                </>) : (<button onClick={handleGoogleSignIn}>Log in</button>)
+                </div>) : (<button onClick={handleGoogleSignIn}>Log in</button>)
             }
         </>
     )

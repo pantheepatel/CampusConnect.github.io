@@ -6,14 +6,20 @@ import Button from '../common/Button';
 import EventForm from '../event/EventForm';
 import ClubForm from '../club/ClubForm';
 import Auth from '../Auth';
+import UserProfileCard from '../user/UserProfileCard';
 
 function Header() {
   return (
-    <div>
-      <Link to="/">Home</Link> &nspb;
-      <Link to="event">Event</Link>&nspb;
-      <Link to="club">Club</Link>
-      <Auth/>
+    <div className='flex bg-cyan-200 justify-around'>
+      <div>Logo</div>
+      <div className='flex justify-between w-1/4'>
+        <Link to="/">Home</Link>
+        <Link to="event">Event</Link>
+        <Link to="club">Club</Link></div>
+      <div>
+        <Link to="profile"> Profile / login </Link>
+        {/* <Auth /> */}
+      </div>
     </div>
   )
 }
