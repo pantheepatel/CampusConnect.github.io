@@ -38,7 +38,7 @@ function App() {
           </Route>
           <Route path='club' element={<ClubList />} >
             <Route path='addClub' element={<ClubForm />} />
-            <Route path='myClub' element={<ClubList />} /> 
+            <Route path='myClub' element={<ClubList />} />
             {/* remove add option from my clublist*/}
             {/* <Route path='myClub' element={<ClubListMy />} /> */}
           </Route>

@@ -5,6 +5,7 @@ import ClubList from '../club/ClubList';
 import Button from '../common/Button';
 import EventForm from '../event/EventForm';
 import ClubForm from '../club/ClubForm';
+import Auth from '../Auth';
 
 function Header() {
   return (
@@ -12,6 +13,7 @@ function Header() {
       <Link to="/">Home</Link> &nspb;
       <Link to="event">Event</Link>&nspb;
       <Link to="club">Club</Link>
+      <Auth/>
     </div>
   )
 }
