@@ -1,6 +1,7 @@
 import {auth, provider} from './FirebaseConfig'; // fire base initailaization
 import {useEffect, useState} from 'react';
 import { signInWithPopup } from 'firebase/auth'; // google interface sign in with 
+import axios from 'axios' // npm install axios
 
 function Auth(){
     const [user, setUser] = useState(null)
@@ -21,9 +22,19 @@ function Auth(){
           }))
           
           setUser(JSON.parse(localStorage.getItem("user_config")))// to use details in react components
+          
+          //sendin data to django to store in firestore
+          axios.get("http://127.0.0.1:8000/auth/", {
+            params:{
+              email: result.user.email,
+              name: result.user.displayName,
+              photo: result.user.photoURL
+            }})
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error))
 
         }).catch((err)=>{
-          console.log(err);
+          // console.log(err);
         })
       }
 
@@ -35,12 +46,12 @@ function Auth(){
     return (
         <>
             {
-                user ? (<div className='p-10 bg-slate-300'>
+                user ? (<>
                     <h1>{user.name}</h1>
                     <h1>{user.email}</h1>
                     <img src={user.photo} alt='none' referrerPolicy='no-referrer'/>
                     <button onClick={handleLogout}>Log out</button>
-                </div>) : (<button onClick={handleGoogleSignIn}>Log in</button>)
+                </>) : (<button onClick={handleGoogleSignIn}>Log in</button>)
             }
         </>
     )
