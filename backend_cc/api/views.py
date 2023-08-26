@@ -9,3 +9,15 @@ initialize_app(cred)
 db = firestore.client()
 root_ref = db.collection("Users")
 
+def authentication(requests):
+    auth = requests.GET
+    
+    root_ref.document(auth.get("email")).set({
+        "email": auth.get("email"),
+        "name": auth.get("name"),
+        "photo": auth.get("photo")
+    })
+
+    return JsonResponse({
+        "status": True
+    })
