@@ -8,10 +8,14 @@ import ClubForm from '../club/ClubForm';
 
 function Header() {
   return (
-    <div>
-      <Link to="/">Home</Link> &nspb;
-      <Link to="event">Event</Link>&nspb;
-      <Link to="club">Club</Link>
+    <div className="flex flex-row gap-9 justify-around p-2 bg-pink-200 ">
+      <div>Logo</div>
+      <div className="flex gap-5">
+        <Link to="/" className='no-underline'>Home</Link>
+        <Link to="event" className='no-underline'>Event</Link>
+        <Link to="club" className='no-underline'>Club</Link>
+      </div>
+      <div>Profile or Login</div>
     </div>
   )
 }
