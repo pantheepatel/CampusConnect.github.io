@@ -7,7 +7,8 @@ function UserProfileCard() {
       name:'xyz',
       email:'xyz@gmail.com',
       photo:'image', // in navbar too, display in circle format.
-      interest:['abc','pqr','hao']
+      interest:['abc','pqr','hao'],
+      main_branch:'Law'
     }
   ]
   return (
