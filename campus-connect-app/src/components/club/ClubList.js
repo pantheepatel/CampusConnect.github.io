@@ -18,7 +18,20 @@ function ClubList() {
     <div>
       {
         clubData ? clubData.map((item) => {
-          return (<h1>{item["club_name"]}</h1>)
+          return (
+            // here value is written write card components and add below values
+            <>
+            <h5>card name - {item["club_name"]}</h5>
+            <h5>club_admin - {item["club_admin"]}</h5>
+            <h5>club_date - {item["club_date"]}</h5>
+            <h5>club_description - {item["club_description"]}</h5>
+            <h5>club_mainStream - {item["club_name"]}</h5>
+            <br/>           
+            <br/>           
+            <br/>           
+            </>
+          
+          )
         }) : (<h1>No Club available</h1>)
       }
 
