@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes, Link, RouterProvider, createBrowserRouter } from "react-router-dom";
-import EventList from '../event/EventList';
-import ClubList from '../club/ClubList';
-import Button from '../common/Button';
-import EventForm from '../event/EventForm';
-import ClubForm from '../club/ClubForm';
-import Auth from '../Auth';
-import UserProfileCard from '../user/UserProfileCard';
+// import EventList from '../event/EventList';
+// import ClubList from '../club/ClubList';
+// import Button from '../common/Button';
+// import EventForm from '../event/EventForm';
+// import ClubForm from '../club/ClubForm';
+// import Auth from '../Auth';
+// import UserProfileCard from '../user/UserProfileCard';
 
 function Header() {
   return (

@@ -13,6 +13,7 @@ initialize_app(cred)
 db = firestore.client()
 root_ref = db.collection("Users")
 root_ref_club = db.collection("Clubs")
+clubNameId = [doc.id for doc in root_ref_club.stream()] # featch all clubId from firebase
 
 def authentication(requests):
     auth = requests.GET
@@ -28,6 +29,8 @@ def authentication(requests):
     })
 
 def club_add(requests):
+    global clubNameId
+    
     club = requests.GET
 
     root_ref_club.add({
@@ -37,17 +40,33 @@ def club_add(requests):
         "club_admin": club.get("club_admin")
     })
 
+    clubNameId = [doc.id for doc in root_ref_club.stream()] # featch all clubId from firebase
+
+
     return JsonResponse({"status": True})
 
 
 def club_list(requests):
-    clubNameId = [doc.id for doc in root_ref_club.stream()] # featch all clubId from firebase
     clubData = []
 
     for clubId in clubNameId:
         clubData.append(root_ref_club.document(clubId).get().to_dict())
 
     return JsonResponse({"clubData":clubData})
+
+def my_club_list(requests):
+    myClubData = []
+    current_admin = requests.GET.get("admin")
+
+    for clubId in clubNameId:
+        db_admin = root_ref_club.document(clubId).get().to_dict()
+        if db_admin["club_admin"] == current_admin:
+            myClubData.append(db_admin)
+
+    return JsonResponse({
+        "admin_clubs": myClubData
+    })
+
         
     
 
