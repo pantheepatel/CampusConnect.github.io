@@ -32,11 +32,11 @@ function ClubList() {
         }) : (<h1>No Club available</h1>)
       }
 
-      <br />
+      {/* <br />
       <Link to='/club/addClub'>Add Club</Link>
       <br />
       <Link to='/club/myClub'>My Club</Link>
-      <Outlet />
+      <Outlet /> */}
     </div>
   )
 }

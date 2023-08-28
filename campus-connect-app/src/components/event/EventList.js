@@ -6,11 +6,7 @@ function EventList() {
   return (
     <div>
       EventList
-      <br />
-      <Link to='/event/addEvent'>Add Event</Link>
-      <br />
-      <Link to='/event/myEvent'>My Event</Link>
-      <Outlet/>
+      
     </div>
   )
 }
