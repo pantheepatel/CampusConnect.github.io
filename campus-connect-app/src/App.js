@@ -17,7 +17,7 @@ import Clubs from './pages/Clubs';
 import UserProfile from './pages/UserProfile';
 function App() {
   return (
-    <div>
+    <div data-bs-theme="light">
       <Router>
         <Header></Header>
         <Routes>

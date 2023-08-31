@@ -8,13 +8,17 @@ function UserProfileCard() {
       email:'xyz@gmail.com',
       photo:'image', // in navbar too, display in circle format.
       interest:['abc','pqr','hao'],
-      main_branch:'Law'
+      main_branch:'Law',
+      bio: 'student and researcher',
+      link_insta:'url:insta',
+      link_linkedIn:'url:linkedIn',
     }
   ]
   return (
     <div>UserProfileCard
       <br />
-      <Link to='auth'>Login / logout</Link>
+      {/* <Link to='auth'>Login / logout</Link> */} 
+      {/* add this login button into the user profile page not in this component. */}
     </div>
   )
 }

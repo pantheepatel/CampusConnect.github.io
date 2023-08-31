@@ -1,4 +1,6 @@
 import React from 'react'
+import {DeleteOutline, AccessAlarmOutlined} from '@mui/icons-material';
+
 import { BrowserRouter as Router, Route, Routes, Link, RouterProvider, createBrowserRouter } from "react-router-dom";
 // import EventList from '../event/EventList';
 // import ClubList from '../club/ClubList';
@@ -10,9 +12,12 @@ import { BrowserRouter as Router, Route, Routes, Link, RouterProvider, createBro
 
 function Header() {
   return (
-    <div className='flex bg-cyan-200 justify-around'>
-      <div>Logo</div>
-      <div className='flex justify-between w-1/4'>
+    <div className='flex justify-around bg-primary-100'>
+      {/* <svg data-testid="DeleteIcon"></svg> */}
+      <DeleteOutline></DeleteOutline>
+      <AccessAlarmOutlined></AccessAlarmOutlined>
+
+      <div className='flex text-danger justify-between w-1/4'>
         <Link to="/">Home</Link>
         <Link to="event">Event</Link>
         <Link to="club">Club</Link></div>
