@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+/* styles.css */
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--blue);
+}
+:root {
+  --db: rgb(1, 0, 41);
+  --lb: rgb(65, 230, 255);
+  --textwhite: white;
+  --textblack: black;
+  --blue: #2b2a33;
+}
+.menu-icon {
+  display: none;
+}
+.navbar {
+  height: 10vh;
+  background-color: var(--db);
+  position: relative;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5px;
+  
+}
+h6 {
+  color: var(--textwhite);
+  margin-right: 10px;
+ 
+}
+span {
+  color: var(--lb);
+}
+.firsthalf{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/*======================================================================DarkMode======================================================================================*/
+
+.switch i{
+    font-size: 20px;
+  cursor: pointer;
+  align-self: center;
+}
+.switch i svg {
+  margin-top: -7px;
+  fill: var(--textwhite);
+
+}
+/*=================================================================================DarkMode==================================================*/
+.nav-elements ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.nav-elements ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin-right: 15px;
+}
+.nav-elements ul a {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--textwhite);
+  text-decoration: none;
+}
+.nav-elements ul li i {
+  font-size: 20px;
+  color: var(--textwhite);
+  margin-right: 5px;
+}
+
+.nav-elements ul li a::after {
+  content: "";
+  width: 0%;
+  background-color: var(--textwhite);
+  height: 3px;
+  display: flex;
+  transition: 0.5s;
+}
+.nav-elements ul li a:hover::after {
+  width: 100%;
+}
+.nav-elements ul a.active {
+  color: var(--lb);
+}
+
+/*=========================================== media ===============================================================*/
+
+@media (max-width: 767px) {
+  .container {
+    padding: 1.5vw;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    color: var(--textwhite);
+    font-size: 25px;
+    z-index: 4;
+  }
+
+  .nav-elements {
+    position: absolute;
+    width: 0px;
+    height: 100vh;
+    overflow: hidden;
+    right: 0%;
+    top: 0;
+    transition: all 0.3s ease-in;
+  }
+  .nav-elements.active {
+    width: 200px;
+    background-color: var(--db);
+    transition: 0.8s;
+  }
+  .nav-elements ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    padding-left: 20px;
+  }
+  .nav-elements ul li {
+    margin-right: auto;
+    margin-top: 22px;
+  }
+}
