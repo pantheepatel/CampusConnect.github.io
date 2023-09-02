@@ -8,5 +8,6 @@ urlpatterns = [
     path("club_add/", api_view.club_add),
     path("club_list/", api_view.club_list),
     path("my_club_list/", api_view.my_club_list),
-    
+    path("club_edit/", api_view.club_edit),
+    path("club_delete/", api_view.club_delete),
 ]

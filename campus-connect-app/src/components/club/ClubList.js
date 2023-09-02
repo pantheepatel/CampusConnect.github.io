@@ -16,17 +16,18 @@ function ClubList() {
 
   return (
     <div>
-      {(!open && clubData.length===0) ? (<h1>No clubs available</h1>) : null}
+      {console.log(clubData)}
+      {(!open && clubData.length === 1) ? (<h1>No clubs available</h1>) : null}
       {
-        clubData ? clubData.map((item) => {
+        clubData && clubData.length > 1 ? clubData.map((item) => {
           return (
             // here value is written write card components and add below values
             <>
-              <h5>card name - {item["club_name"]}</h5>
-              <h5>club_admin - {item["club_admin"]}</h5>
-              <h5>club_date - {item["club_date"]}</h5>
-              <h5>club_description - {item["club_description"]}</h5>
-              <h5>club_mainStream - {item["club_name"]}</h5>
+              <h5>card name - {item &&item["club_name"]}</h5>
+              <h5>club_admin - {item && item["club_admin"]}</h5>
+              <h5>club_date - {item && item["club_date"]}</h5>
+              <h5>club_description - {item && item["club_description"]}</h5>
+              <h5>club_mainStream - {item && item["club_name"]}</h5>
               <br />
               <br />
               <br />

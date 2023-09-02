@@ -3,24 +3,38 @@ import React, { useEffect, useState } from 'react'
 import { myClubData_ } from '../../services/clubService';// this import js file which we write logic of fetch api
 import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
+import ClubForm from './ClubForm';
+import axios from 'axios';
 
 function ClubListMy() {
   const [myClubData, setMyClubData] = useState(null)  //store club data 
   const [open, setOpen] = useState(true)
+  const [state, setState] = useState("")
 
   useEffect(() => {
     myClubData_().then(response => {
       setMyClubData(response.data["admin_clubs"]);
-      console.log(myClubData)
       setOpen(false)
     })//save response in clubdata
   }, [])
 
+  function clubDelete(index){
+    axios.get("http://127.0.0.1:8000/club_delete", {
+      params:
+      {
+        id:myClubData[index]['id']
+      }
+    }).then(response=> window.location.replace('/myClub'))
+  }
+
   return (
     <>
-      {(!open && myClubData.length===0) ? (<h1>No clubs available</h1>) : null}
       {
-        myClubData ? myClubData.map((item) => {
+        state ? <ClubForm data = {myClubData[state]} /> : (<>
+          {(!open && myClubData.length===0) ? (<h1>No clubs available</h1>) : null}
+      {
+        myClubData ? myClubData.map((item, index) => {
+
           return (
             // here value is written write card components and add below values
             <>
@@ -29,6 +43,8 @@ function ClubListMy() {
               <h5>club_date - {item["club_date"]}</h5>
               <h5>club_description - {item["club_description"]}</h5>
               <h5>club_mainStream - {item["club_name"]}</h5>
+              <button className='btn btn-primary' onClick={() => setState(index)}>Edit</button>
+              <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
               <br />
               <br />
               <br />
@@ -41,6 +57,8 @@ function ClubListMy() {
               onClick={() => setOpen(false)}>
                 <CircularProgress color="inherit" />
             </Backdrop>
+      }
+        </>)
       }
     </>
   )
