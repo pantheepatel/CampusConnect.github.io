@@ -5,7 +5,9 @@ react js
 npm install axios
 npm install firebase
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
+for loading
+npm install @mui/material @emotion/react @emotion/styled
 -------------------------------------------------------------------------------------------------------------------------------------------------
 backend
 pip install firebase_admin   if it's not work use pip install firebase-admin
