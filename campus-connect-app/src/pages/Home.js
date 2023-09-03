@@ -6,7 +6,8 @@ function Home() {
   return (
     <div>
         
-        <div></div>
+        <div style={{ margin: '1000px' }}>dsdds</div>
+
         <Footer></Footer>
     </div>
   )
