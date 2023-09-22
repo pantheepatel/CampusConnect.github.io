@@ -39,6 +39,7 @@ function Auth(){
       }
 
       const handleLogout=()=>{//when we click log out userdata remove 
+        // localStorage.clear()
         setUser(null)
         localStorage.setItem("user_config", null)// also delete from localstorage to
       }

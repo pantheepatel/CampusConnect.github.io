@@ -1,12 +1,14 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
-function ClubCard() {
+function ClubCard(props) {
   let clubCardData = [{
     name: 'club1',
     description: 'lorem ipsum1',
     startDate: '28-8-2004',
     admin: 'admin11@gmail.com',
-    core_team: ['admin12@gmail.com', 'admin13@gmail.com','admin14@gmail.com'],
+    core_team: ['admin12@gmail.com', 'admin13@gmail.com', 'admin14@gmail.com'],
     main_stream: 'Engineering',
     // photo:'url' // not now
   }, {
@@ -14,7 +16,7 @@ function ClubCard() {
     description: 'lorem ipsum2',
     startDate: '28-8-20024',
     admin: 'admin21@gmail.com',
-    core_team: ['admin22@gmail.com', 'admin23@gmail.com','admin24@gmail.com'],
+    core_team: ['admin22@gmail.com', 'admin23@gmail.com', 'admin24@gmail.com'],
     main_stream: 'Mass and Media',
     // photo:'url' // not now
   }, {
@@ -22,13 +24,30 @@ function ClubCard() {
     description: 'lorem ipsum3',
     startDate: '28-5-2004',
     admin: 'admin31@gmail.com',
-    core_team: ['admin32@gmail.com', 'admin33@gmail.com','admin34@gmail.com'],
+    core_team: ['admin32@gmail.com', 'admin33@gmail.com', 'admin34@gmail.com'],
     main_stream: 'Law',
     // photo:'url' // not now
   }]
   // task1 : make only 1 card with UI that can display this data
   return (
-    <div>ClubCard</div>
+
+    <div>
+      <Card>
+      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+      <Card.Body>
+        <Card.Title>{props.name}</Card.Title>
+        <Card.Text>
+          description - {props.description}
+          <br />
+          admin - {props.admin}
+          <br />
+          date - {props.date}
+          <br />
+        </Card.Text>
+        {/* <Button variant="primary">Go somewhere</Button> */}
+      </Card.Body>
+    </Card>
+    </div>
   )
 }
 
