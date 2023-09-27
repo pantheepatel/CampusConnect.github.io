@@ -16,6 +16,7 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import Clubs from './pages/Clubs';
 import UserProfile from './pages/UserProfile';
+// import Footer from './components/common/Footer';
 function App() {
   return (
     <div>
@@ -38,6 +39,7 @@ function App() {
             <Route path='auth' element={<Auth />} />
           </Route>
         </Routes>
+        <Footer></Footer>
       </Router>
     </div>
   );
