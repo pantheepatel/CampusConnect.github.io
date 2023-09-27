@@ -29,46 +29,52 @@ function ClubListMy() {
 
   return (
     <>
+    {console.log('myclub data: ',myClubData)}
       {
-        state ? <ClubForm data={myClubData[state]} /> : (<>
-          {(!open && myClubData.length === 0) ? (<h1>No clubs available</h1>) : null}
-          {
-            myClubData ? myClubData.map((item, index) => {
-              var userAdmin = (item['club_admin'] === JSON.parse(localStorage['user_config']).email)
-              return (
-                // here value is written write card components and add below values
-                <>
-                  {console.log('admin : ', item['club_admin'])}
-                  {console.log('loggedin : ', JSON.parse(localStorage['user_config']).email)}
-                  {console.log('user admin, ', userAdmin)}
-                  <h5>card name - {item["club_name"]}</h5>
-                  <h5>club_admin - {item["club_admin"]}</h5>
-                  <h5>club_date - {item["club_date"]}</h5>
-                  <h5>club_description - {item["club_description"]}</h5>
-                  <h5>club_mainStream - {item["club_name"]}</h5>
-                  {
-                    userAdmin ?
-                      <div>
-                        <button className='btn btn-primary' onClick={() => setState(index)}>Edit</button>
-                        <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
-                      </div>
-                      :
-                      <div></div>
-                  }
-                  <br />
-                  <br />
-                  <br />
-                </>
+        
+        myClubData.length>0 ?
+          myClubData.map((item, index) => {
+            var userAdmin = (item['club_admin'] === JSON.parse(localStorage['user_config']).email)
+            return (
+              // here value is written write card components and add below values
+              <>
+                {console.log('admin : ', item['club_admin'])}
+                {console.log('loggedin : ', JSON.parse(localStorage['user_config']).email)}
+                {console.log('user admin, ', userAdmin)}
+                <h5>card name - {item["club_name"]}</h5>
+                <h5>club_admin - {item["club_admin"]}</h5>
+                <h5>club_date - {item["club_date"]}</h5>
+                <h5>club_description - {item["club_description"]}</h5>
+                <h5>club_mainStream - {item["club_name"]}</h5>
+                {
+                  userAdmin ?
+                    <div>
+                      <button className='btn btn-primary' onClick={() => setState(index)}>Edit</button>
+                      <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
+                    </div>
+                    :
+                    <div>lkjgf</div>
+                }
+                <br />
+                <br />
+                <br />
+              </>
 
-              )
-            }) : <Backdrop
-              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-              open={open}
-              onClick={() => setOpen(false)}>
-              <CircularProgress color="inherit" />
-            </Backdrop>
-          }
-        </>)
+            )
+          })
+          :
+          <div>no clubs available</div>
+        // state ? <ClubForm data={myClubData[state]} /> : (<>
+        //   {(!open && myClubData.length === 0) ? (<h1>No clubs available</h1>) : null}
+        //   {
+        //     : <Backdrop
+        //     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        //     open={open}
+        //     onClick={() => setOpen(false)}>
+        //     <CircularProgress color="inherit" />
+        //   </Backdrop>
+        //   }
+        // </>)
       }
     </>
   )
