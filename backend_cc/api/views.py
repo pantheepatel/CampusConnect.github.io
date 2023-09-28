@@ -67,9 +67,10 @@ def my_club_list(requests):
 
     for clubId in clubNameId:
         db_admin = root_ref_club.document(clubId).get().to_dict()
-        if db_admin["club_admin"] == current_admin:
-            db_admin["id"] = clubId
-            myClubData.append(db_admin)
+        if db_admin:
+            if db_admin["club_admin"] == current_admin:
+                db_admin["id"] = clubId
+                myClubData.append(db_admin)
 
     return JsonResponse({
         "admin_clubs": myClubData
