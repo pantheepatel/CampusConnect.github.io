@@ -1,12 +1,10 @@
 import React from 'react';
-import Hello from '../components/common/Hello'
-// import Footer from '../components/common/Footer';
+import Hello from '../components/common/Hello';
 
 function Home() {
   return (
     <div>
         <Hello/>
-        {/* <Footer></Footer> */}
     </div>
   )
 }
