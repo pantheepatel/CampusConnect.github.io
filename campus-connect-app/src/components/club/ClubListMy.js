@@ -53,7 +53,7 @@ function ClubListMy() {
                       <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
                     </div>
                     :
-                    <div>lkjgf</div>
+                    <div></div>
                 }
                 <br />
                 <br />

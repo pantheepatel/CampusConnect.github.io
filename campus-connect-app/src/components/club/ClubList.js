@@ -30,14 +30,16 @@ function ClubList() {
                 <ClubCard name={item['club_name']} description={item["club_description"]} image={item["club_image"]} website={item["club_website"]} team={item["club_team"]} admin={item["club_admin"]} date={item["club_date"]} field={item["club_field"]}></ClubCard>
               )
             }
-          }) : <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={open}
-            onClick={() => setOpen(false)}>
-            <CircularProgress color="inherit" />
-          </Backdrop>
+          }) :
+            <div></div>
         }
       </Row>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={() => setOpen(false)}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
 
       {/* </Container> */}
     </div>

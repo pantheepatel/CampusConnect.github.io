@@ -16,6 +16,7 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import Clubs from './pages/Clubs';
 import UserProfile from './pages/UserProfile';
+import NotFound from './pages/NotFound'
 // import Footer from './components/common/Footer';
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path='' element={<UserProfile />}></Route>
             <Route path='auth' element={<Auth />} />
           </Route>
+          <Route path='*' element={<NotFound/>}></Route>
         </Routes>
         <Footer></Footer>
       </Router>
