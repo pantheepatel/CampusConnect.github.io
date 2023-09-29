@@ -12,8 +12,10 @@ body {
 }
 
 :root {
-    --db: rgb(1, 0, 41);
-    --lb: rgb(65, 230, 255);
+   
+    --db: #393E46;
+  
+    --lb: #E0E0E0;
     --textwhite: white;
     --textblack: black;
     --blue: #2b2a33;
@@ -38,7 +40,7 @@ body {
 }
 
 h6 {
-    color: var(--textwhite);
+    color: var(--textwhite) !important;
     margin-right: 10px;
 
 }
@@ -50,7 +52,7 @@ span {
 .firsthalf {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 /*======================================================================DarkMode======================================================================================*/

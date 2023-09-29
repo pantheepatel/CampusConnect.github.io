@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 .app {
     min-height: 100vh;
     display: flex;
@@ -19,11 +18,12 @@
     width: 100%;
     display: grid;
     row-gap: 2rem;
-    background-color: var(--bg-clr);
+    background-color: var(--db);
     padding: 1rem 1.5rem;
     position: relative;
     /* top:100%; */
 }
+
 
 .footer .footer-company-info {
     display: grid;
@@ -77,12 +77,12 @@
 
 .footer .footer-links ul li:first-child {
     font-size: 1.25rem;
-    color: var(--text-main-clr);
+    color: var(--textwhite);
     font-weight: 500;
 }
 
 .footer .footer-links ul li:not(:first-child) {
-    color: var(--text-secondary-clr);
+    color: var(--textwhite);
     cursor: pointer;
 }
 
@@ -93,7 +93,7 @@
 
 .footer .footer-form label {
     font-size: 1.5rem;
-    color: var(--text-main-clr);
+    color: var(--textwhite);
     font-weight: 500;
 }
 
