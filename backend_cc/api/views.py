@@ -46,10 +46,9 @@ def club_add(requests):
         "club_description": club.get("club_description"),
         "club_date": club.get("club_date"),
         "club_admin": club.get("club_admin"),
-        # "club_image":"",
+        "club_image":club.get("club_image"),
+        "club_field":club.get("club_field"),
         # "club_teamMember": firestore.ArrayUnion([club.get("club_teammember").split(",")])
-        # "field":"",
-
     })
 
     clubNameId = [doc.id for doc in root_ref_club.stream()] # featch all clubId from firebase
@@ -100,7 +99,7 @@ def club_delete(request):
 
 def userData(request):
     user=request.GET
-    print("pppppppppppppppppp",user.get("email"))
+    print("user DATA : ",user.get("email"))
     data=root_ref_user.document(user.get("email")).get().to_dict()
     print(data)
 

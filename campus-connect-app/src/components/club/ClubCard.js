@@ -36,11 +36,11 @@ function ClubCard(props) {
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
           <Card.Title className='capitalize'>{props.name}</Card.Title>
-          {props.image ?
+          {/* {props.image ?
             <Card.Img src={props.Img} />
             :
-            <p>no</p>
-          }
+            <p>no image found</p>
+          } */}
           <Card.Text>
             {props.admin ? <p>{props.admin}</p> : <p>no data</p>}
             {props.date ? <p>{props.date}</p> : <p>no data</p>}
