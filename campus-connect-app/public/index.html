@@ -40,4 +40,24 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    useEffect(() => {
+    const carousel = document.getElementById("myCarousel");
+    const carouselInstance = new window.bootstrap.Carousel(carousel);
+
+    // Optionally, you can add event listeners to control the carousel manually
+    // For example, to slide to the next slide on a button click
+    const nextButton = document.getElementById("nextButton");
+    nextButton.addEventListener("click", () => {
+      carouselInstance.next();
+    });
+
+    // Cleanup event listeners when the component is unmounted
+    return () => {
+      nextButton.removeEventListener("click", () => {
+        carouselInstance.next();
+      });
+    };
+  }, []);
+  </script>
 </html>
