@@ -32,7 +32,7 @@ function ClubListMy() {
     {console.log('myclub data: ',myClubData)}
       {
         
-        myClubData.length>0 ?
+        myClubData ?
           myClubData.map((item, index) => {
             var userAdmin = (item['club_admin'] === JSON.parse(localStorage['user_config']).email)
             return (
