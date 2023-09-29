@@ -35,12 +35,14 @@ function ClubForm(props) {
           setClubWebsite("")
           setClubField("")
           setClubImage("")
+          setClubId("")
         })
         .catch(error => console.log(error))
     }
     else {
       axios.get("http://127.0.0.1:8000/club_add", { // call api request to backend to store club data
         params: {
+          id: clubId,//we use json.parse bcoz in our localstorage data in string
           club_name: clubName,
           club_description: clubDescription,
           club_date: clubDate,
@@ -58,6 +60,7 @@ function ClubForm(props) {
           setClubWebsite("")
           setClubField("")
           setClubImage("")
+          setClubId("")
         })
         .catch(error => console.log(error))
     }

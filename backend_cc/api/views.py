@@ -42,6 +42,7 @@ def club_add(requests):
     # print(blob.public_url)
 
     root_ref_club.add({
+        "club_id": club.get("id"),
         "club_name": club.get("club_name"),
         "club_description": club.get("club_description"),
         "club_date": club.get("club_date"),

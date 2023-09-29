@@ -18,16 +18,16 @@ function ClubList() {
 
   return (
     <div className='p-4'>
-      {/* {console.log(clubData)} */}
+      {console.log(clubData)}
       {/* <Container> */}
 
-      {(!open && clubData.length === 1) ? (<h1>No clubs available</h1>) : null}
+      {(!open && clubData.length === 0) ? (<h1>No clubs available</h1>) : null}
       <Row xs={1} md={2} lg={3}>
         {
-          clubData && clubData.length > 1 ? clubData.map((item) => {
+          clubData && clubData.length > 0 ? clubData.map((item) => {
             if (item['club_name']) {
               return (
-                <ClubCard name={item['club_name']} description={item["club_description"]} image={item["club_image"]} website={item["club_website"]} team={item["club_team"]} admin={item["club_admin"]} date={item["club_date"]} field={item["club_field"]}></ClubCard>
+                <ClubCard id={item['id']} name={item['club_name']} description={item["club_description"]} image={item["club_image"]} website={item["club_website"]} team={item["club_team"]} admin={item["club_admin"]} date={item["club_date"]} field={item["club_field"]}></ClubCard>
               )
             }
           }) :

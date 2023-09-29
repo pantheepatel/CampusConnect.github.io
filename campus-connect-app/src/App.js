@@ -19,6 +19,7 @@ import Clubs from './pages/Clubs';
 import UserProfile from './pages/UserProfile';
 import NotFound from './pages/NotFound';
 import UserProfileEditForm from './components/user/UserProfileEditForm'
+import ClubCard from './components/club/ClubCard';
 // import Footer from './components/common/Footer';
 function App() {
   return (
@@ -28,22 +29,22 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='event'>
-            <Route path='' element={<Events />}/>
+            <Route path='' element={<Events />} />
             <Route path='addEvent' element={<EventForm />} />
             <Route path='myEvent' element={<EventListMy />} />
           </Route>
           <Route path='club'>
-            <Route path='' element={<Clubs />}/>
+            <Route path='' element={<Clubs />} />
             <Route path='addClub' element={<ClubForm />} />
             <Route path='myClub' element={<ClubListMy />} />
-            <Route path=':id' element={<ClubListMy />} />
           </Route>
+          <Route path='club/:id' element={<ClubDetails />} />
           <Route path='profile'>
             <Route path='' element={<UserProfile />}></Route>
-            <Route path='editProfile' element={<UserProfileEditForm/>}></Route>
+            <Route path='editProfile' element={<UserProfileEditForm />}></Route>
             <Route path='auth' element={<Auth />} />
           </Route>
-          <Route path='*' element={<NotFound/>}></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Routes>
         <Footer></Footer>
       </Router>

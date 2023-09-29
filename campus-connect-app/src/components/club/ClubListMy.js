@@ -24,7 +24,7 @@ function ClubListMy() {
       {
         id: myClubData[index]['id']
       }
-    }).then(response => window.location.replace('/myClub'))
+    }).then(response => window.location.replace('club/myClub'))
   }
 
   return (

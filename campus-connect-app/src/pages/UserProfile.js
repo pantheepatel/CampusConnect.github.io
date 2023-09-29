@@ -12,7 +12,7 @@ function UserProfile() {
       setUser(JSON.parse(localStorage.getItem("user_config")))// so we set user info as 
       axios.get("http://127.0.0.1:8000/user_data/", {
         params: {
-          email: user.email
+          // email: user.email
         }
       }).then(response => console.log("user data info", response.data)).catch((err) => console.log(err))
 
