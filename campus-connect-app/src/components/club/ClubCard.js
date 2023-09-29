@@ -32,21 +32,30 @@ function ClubCard(props) {
   return (
 
     <div>
-      <Card>
-      {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-      <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
-        <Card.Text>
-          description - {props.description}
+      <Card style={{ 'height': '15rem' }}>
+        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+        <Card.Body>
+          <Card.Title className='capitalize'>{props.name}</Card.Title>
+          {props.image ?
+            <Card.Img src={props.Img} />
+            :
+            <p>no</p>
+          }
+          <Card.Text>
+            {props.admin ? <p>{props.admin}</p> : <p>no data</p>}
+            {props.date ? <p>{props.date}</p> : <p>no data</p>}
+            {props.description ? <p>{props.description}</p> : <p>no data</p>}
+
+            {/* description - {props.description}
           <br />
           admin - {props.admin}
           <br />
-          date - {props.date}
-          <br />
-        </Card.Text>
-        {/* <Button variant="primary">Go somewhere</Button> */}
-      </Card.Body>
-    </Card>
+          date - {props.date} */}
+            <br />
+          </Card.Text>
+          {/* <Button variant="primary">Go somewhere</Button> */}
+        </Card.Body>
+      </Card>
     </div>
   )
 }
