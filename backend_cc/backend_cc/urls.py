@@ -10,4 +10,6 @@ urlpatterns = [
     path("my_club_list/", api_view.my_club_list),
     path("club_edit/", api_view.club_edit),
     path("club_delete/", api_view.club_delete),
+    path("user_data/", api_view.userData),
+    
 ]

@@ -1,5 +1,3 @@
-// import React,{useState} from 'react'
-// import Auth from '../components/Auth'
 import UserProfileCard from '../components/user/UserProfileCard'
 
 import {auth, provider} from '../components/FirebaseConfig'; // fire base initailaization
@@ -14,9 +12,17 @@ function UserProfile(){
     useEffect(() =>{
       if(localStorage.getItem("user_config")){ // if local storage has data it remain as it is
         setUser(JSON.parse(localStorage.getItem("user_config")))// so we set user info as 
+        axios.get("http://127.0.0.1:8000/user_data/",{
+          params:{
+            email: "yagnikvaru2003@gmail.com"
+          }
+        }).then(response=>console.log("user data info",response.data)).catch((err)=>console.log(err))
+
       }
     }, [])// here [] present empty dependancy on page load 
 
+   
+   
     const handleGoogleSignIn=()=>{
         signInWithPopup(auth, provider).then((result)=>{
           console.log("user data",result)
@@ -39,10 +45,15 @@ function UserProfile(){
             .then(response => console.log(response.data))
             .catch(error => console.log(error))
 
+         
+
         }).catch((err)=>{
           // console.log(err);
+          
+
         })
       }
+      
 
       const handleLogout=()=>{//when we click log out userdata remove 
         // localStorage.clear()

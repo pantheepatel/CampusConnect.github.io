@@ -10,6 +10,7 @@ SecretKey_path=os.getcwd()+"\\api\SecretKey.json"
 
 cred = credentials.Certificate(SecretKey_path)
 initialize_app(cred, {"StorageBucket": 'campusconnect-3a629.appspot.com'})
+
 db = firestore.client()
 root_ref_user = db.collection("Users")
 root_ref_club = db.collection("Clubs")
@@ -44,7 +45,11 @@ def club_add(requests):
         "club_name": club.get("club_name"),
         "club_description": club.get("club_description"),
         "club_date": club.get("club_date"),
-        "club_admin": club.get("club_admin")
+        "club_admin": club.get("club_admin"),
+        # "club_image":"",
+        # "club_teamMember": firestore.ArrayUnion([club.get("club_teammember").split(",")])
+        # "field":"",
+
     })
 
     clubNameId = [doc.id for doc in root_ref_club.stream()] # featch all clubId from firebase
@@ -92,7 +97,16 @@ def club_delete(request):
     root_ref_club.document(club.get('id')).delete()
     
     return JsonResponse({"status": True})
-    
+
+def userData(request):
+    user=request.GET
+    print("pppppppppppppppppp",user.get("email"))
+    data=root_ref_user.document(user.get("email")).get().to_dict()
+    print(data)
+
+    return JsonResponse(data)
+
+
     
 
 
