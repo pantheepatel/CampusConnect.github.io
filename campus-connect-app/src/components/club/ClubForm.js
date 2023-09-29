@@ -75,7 +75,7 @@ function ClubForm(props) {
     }
   }, [])
 
-  const mainFields=['Eng','Law','phy','other']
+  const mainFields = ['Eng', 'Law', 'phy', 'other']
   return (
     <>
       {status && <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -86,7 +86,88 @@ function ClubForm(props) {
         </button>
       </div>}
 
-      <div className='container mt-10'>
+      <form onSubmit={http_club} class="min-w-screen flex min-h-screen items-center justify-center bg-gray-900 px-5 py-5">
+        <div class="w-full overflow-hidden rounded-3xl bg-gray-100 text-gray-500 shadow-xl" style={{ maxWidth: '1000px' }}>
+          <div class="w-full md:flex">
+            <div class="w-full px-5 py-10 md:px-10">
+              <div class="mb-10 text-center">
+                <h1 class="text-3xl font-bold text-gray-900">REGISTER</h1>
+                <p>Enter your information to register</p>
+              </div>
+              <div>
+                <div class="-mx-3 flex">
+                  <div class="mb-2 w-full px-3">
+                    <label for="inputName" class="px-1 text-xs font-semibold">Club name</label>
+                    <div class="flex">
+                      <div class="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i class="mdi mdi-account-outline text-lg text-gray-400"></i></div>
+                      <input type="text" value={clubName} onChange={(e) => setClubName(e.target.value)} class="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" />
+                    </div>
+                  </div>
+                  <div class="mb-2 w-1/2 px-3">
+                    <label for="inputDate" class="px-1 text-xs font-semibold">Start Date</label>
+                    <div class="flex">
+                      <div class="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i class="mdi mdi-account-outline text-lg text-gray-400"></i></div>
+                      <input type="date" max={Date.now()} value={clubDate} onChange={(e) => setClubDate(e.target.value)} class="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" />
+                    </div>
+                  </div>
+                  <div class="mb-2 w-1/2 px-3">
+                    <label for="" class="px-1 text-xs font-semibold">Field</label>
+                    <div class="flex">
+                      <div class="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i class="mdi mdi-account-outline text-lg text-gray-400"></i></div>
+                      {/* <input type="text" class="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" /> */}
+                      <select name="inputClubStream" value={clubField} onChange={(e) => setClubField(e.target.value)}  id="inputClubStream" className="form-control -ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500">
+                        {
+                          mainFields.map((field) => {
+                            return (
+                              <option value={field} key={field}>{field}</option>
+                            )
+                          })
+                        }
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="-mx-3 flex">
+                  <div class="mb-2 w-1/2 px-3">
+                    <label for="" class="px-1 text-xs font-semibold">Image URL</label>
+                    <div class="flex">
+                      <div class="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i class="mdi mdi-account-outline text-lg text-gray-400"></i></div>
+                      <input type="url" value={clubImage} onChange={(e) => setClubImage(e.target.value)}  class="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" />
+                    </div>
+                  </div>
+                  <div class="mb-2 w-1/2 px-3">
+                    <label for="" class="px-1 text-xs font-semibold">Website</label>
+                    <div class="flex">
+                      <div class="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i class="mdi mdi-account-outline text-lg text-gray-400"></i></div>
+                      <input type="url" value={clubWebsite} onChange={(e) => setClubWebsite(e.target.value)}  class="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="-mx-3 flex">
+                  <div class="mb-2 w-full px-3">
+                    <label for="" class="px-1 text-xs font-semibold">Description</label>
+                    <div class="flex">
+                      <div class="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i class="mdi mdi-account-outline text-lg text-gray-400"></i></div>
+                      <textarea value={clubDescription} onChange={(e) => setClubDescription(e.target.value)} class="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" rows={7} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="-mx-3 flex">
+            <div class="mb-5 w-full px-3">
+              <button class="mx-auto block w-full max-w-xs rounded-lg bg-indigo-500 px-3 py-3 font-semibold text-white hover:bg-indigo-700 focus:bg-indigo-700" type='submit'>{props.data ? "Edit" : "Save"}</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      {/* <div className='container mt-10'>
         <form className="row g-3" onSubmit={http_club}>
           <div className="col-md-12">
             <label for="inputName" className="form-label">Club Name</label>
@@ -131,7 +212,7 @@ function ClubForm(props) {
           </div>
 
         </form>
-      </div>
+      </div> */}
 
     </>
   )

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes, Link, RouterProvider, createBro
 import EventList from './components/event/EventList';
 import ClubList from './components/club/ClubList';
 import ClubListMy from './components/club/ClubListMy';
+import ClubDetails from './components/club/ClubDetails'
 import EventForm from './components/event/EventForm';
 import EventListMy from './components/event/EventListMy'
 import ClubForm from './components/club/ClubForm';
@@ -16,7 +17,8 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import Clubs from './pages/Clubs';
 import UserProfile from './pages/UserProfile';
-import NotFound from './pages/NotFound'
+import NotFound from './pages/NotFound';
+import UserProfileEditForm from './components/user/UserProfileEditForm'
 // import Footer from './components/common/Footer';
 function App() {
   return (
@@ -34,9 +36,11 @@ function App() {
             <Route path='' element={<Clubs />}/>
             <Route path='addClub' element={<ClubForm />} />
             <Route path='myClub' element={<ClubListMy />} />
+            <Route path=':id' element={<ClubListMy />} />
           </Route>
           <Route path='profile'>
             <Route path='' element={<UserProfile />}></Route>
+            <Route path='editProfile' element={<UserProfileEditForm/>}></Route>
             <Route path='auth' element={<Auth />} />
           </Route>
           <Route path='*' element={<NotFound/>}></Route>

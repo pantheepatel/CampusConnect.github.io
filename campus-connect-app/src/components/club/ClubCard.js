@@ -36,24 +36,29 @@ function ClubCard(props) {
         {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
         <Card.Body>
           <Card.Title className='capitalize'>{props.name}</Card.Title>
-          {/* {props.image ?
-            <Card.Img src={props.Img} />
-            :
-            <p>no image found</p>
-          } */}
+          {
+            console.log(props.website)
+          }
           <Card.Text>
             {props.admin ? <p>{props.admin}</p> : <p>no data</p>}
             {props.date ? <p>{props.date}</p> : <p>no data</p>}
             {props.description ? <p>{props.description}</p> : <p>no data</p>}
 
-            {/* description - {props.description}
-          <br />
-          admin - {props.admin}
-          <br />
-          date - {props.date} */}
+            {
+              props.image ?
+                <Card.Img src={props.image} className='h-25' />
+                :
+                <div>no image found</div>
+            }
+            {
+              props.website ?
+                <p src={props.website} className='h-25' />
+                :
+                <div>no image found</div>
+            }
             <br />
           </Card.Text>
-          {/* <Button variant="primary">Go somewhere</Button> */}
+          <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
     </div>

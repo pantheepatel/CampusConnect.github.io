@@ -18,12 +18,12 @@ function Clubs() {
     <>
       {
         isLoggedIn ?
-          <div className='pt-3 px-5 grid grid-cols-12 gap-2'>
+          <div className='pt-3 px-5'>
             <Link to='addClub'>
-              <Button>Add Club</Button>
+              <Button className='mx-2'>Add Club</Button>
             </Link>
             <Link to='myClub'>
-              <Button>My Club</Button>
+              <Button className='mx-2'>My Club</Button>
             </Link>
           </div>
           :
