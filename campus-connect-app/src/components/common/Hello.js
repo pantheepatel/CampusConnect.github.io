@@ -9,7 +9,7 @@ function Hello() {
   return (
     <div>
       <Carousel />
-      <Card />
+      {/* <Card /> */}
       <div className="container-fluid">
         <div className="row">
           <div className="text">

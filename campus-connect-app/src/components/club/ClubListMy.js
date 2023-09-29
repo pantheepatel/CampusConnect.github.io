@@ -9,7 +9,8 @@ import axios from 'axios';
 function ClubListMy() {
   const [myClubData, setMyClubData] = useState(null)  //store club data 
   const [open, setOpen] = useState(true)
-  const [state, setState] = useState("")
+  const [state, setState] = useState("myclub")
+  const [item, setItem] = useState({})
 
   useEffect(() => {
     myClubData_().then(response => {
@@ -24,57 +25,62 @@ function ClubListMy() {
       {
         id: myClubData[index]['id']
       }
-    }).then(response => window.location.replace('club/myClub'))
+    }).then(response => window.location.replace('/club'))
   }
 
   return (
     <>
-    {console.log('myclub data: ',myClubData)}
       {
-        
-        myClubData ?
-          myClubData.map((item, index) => {
-            var userAdmin = (item['club_admin'] === JSON.parse(localStorage['user_config']).email)
-            return (
-              // here value is written write card components and add below values
-              <>
-                {console.log('admin : ', item['club_admin'])}
-                {console.log('loggedin : ', JSON.parse(localStorage['user_config']).email)}
-                {console.log('user admin, ', userAdmin)}
-                <h5>card name - {item["club_name"]}</h5>
-                <h5>club_admin - {item["club_admin"]}</h5>
-                <h5>club_date - {item["club_date"]}</h5>
-                <h5>club_description - {item["club_description"]}</h5>
-                <h5>club_mainStream - {item["club_name"]}</h5>
-                {
-                  userAdmin ?
-                    <div>
-                      <button className='btn btn-primary' onClick={() => setState(index)}>Edit</button>
-                      <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
-                    </div>
-                    :
-                    <div></div>
-                }
-                <br />
-                <br />
-                <br />
-              </>
+        state == "edit" && <ClubForm data={item} />
+      }
+      {
+        state == "myclub" && (<>
+          {
+            myClubData ?
+              myClubData.map((item, index) => {
+                var userAdmin = (item['club_admin'] === JSON.parse(localStorage['user_config']).email)
+                return (
+                  // here value is written write card components and add below values
+                  <>
+                    {console.log('admin : ', item['club_admin'])}
+                    {console.log('loggedin : ', JSON.parse(localStorage['user_config']).email)}
+                    {console.log('user admin, ', userAdmin)}
+                    <h5>card name - {item["club_name"]}</h5>
+                    <h5>club_admin - {item["club_admin"]}</h5>
+                    <h5>club_date - {item["club_date"]}</h5>
+                    <h5>club_description - {item["club_description"]}</h5>
+                    <h5>club_mainStream - {item["club_name"]}</h5>
+                    {
+                      userAdmin ?
+                        <div>
+                          <button className='btn btn-primary' onClick={() => setState(index)}>Edit</button>
+                          <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
+                        </div>
+                        :
+                        <div></div>
+                    }
+                    <br />
+                    <br />
+                    <br />
+                  </>
 
-            )
-          })
-          :
-          <div>no clubs available</div>
-        // state ? <ClubForm data={myClubData[state]} /> : (<>
-        //   {(!open && myClubData.length === 0) ? (<h1>No clubs available</h1>) : null}
-        //   {
-        //     : <Backdrop
-        //     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        //     open={open}
-        //     onClick={() => setOpen(false)}>
-        //     <CircularProgress color="inherit" />
-        //   </Backdrop>
-        //   }
-        // </>)
+                )
+              })
+              :
+              <div>no clubs available</div>
+            // state ? <ClubForm data={myClubData[state]} /> : (<>
+            //   {(!open && myClubData.length === 0) ? (<h1>No clubs available</h1>) : null}
+            //   {
+            //     : <Backdrop
+            //     sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            //     open={open}
+            //     onClick={() => setOpen(false)}>
+            //     <CircularProgress color="inherit" />
+            //   </Backdrop>
+            //   }
+            // </>)
+          }
+        </>)
       }
     </>
   )

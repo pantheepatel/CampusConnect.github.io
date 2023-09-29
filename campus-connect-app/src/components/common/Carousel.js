@@ -3,6 +3,7 @@ import "./Carousel.css";
 import img2 from "../../assets/2.jpg";
 import img3 from "../../assets/4.jpg";
 import img4 from "../../assets/1.jpg";
+import { Link } from "react-router-dom";
 const Carousel = () => {
   return (
     <>
@@ -27,9 +28,9 @@ const Carousel = () => {
                     of the carousel.
                   </p>
                   <p>
-                    <a class="btn btn-lg btn-primary" href="#">
-                      Sign up /today
-                    </a>
+                    <Link class="btn btn-lg btn-primary" to="profile">
+                      Sign up today
+                    </Link>
                   </p>
                 </div>
               </div>
@@ -44,9 +45,9 @@ const Carousel = () => {
                     of the carousel.
                   </p>
                   <p>
-                    <a class="btn btn-lg btn-primary" href="#">
-                      Learn more /{" "}
-                    </a>
+                    <Link class="btn btn-lg btn-primary" to='club'>
+                      Learn more
+                    </Link>
                   </p>
                 </div>
               </div>
@@ -61,9 +62,9 @@ const Carousel = () => {
                     of this carousel.
                   </p>
                   <p>
-                    <a class="btn btn-lg btn-primary" href="#">
+                    {/* <a class="btn btn-lg btn-primary" href="#">
                       Browse gallery /{" "}
-                    </a>
+                    </a> */}
                   </p>
                 </div>
               </div>

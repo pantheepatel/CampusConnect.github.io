@@ -61,7 +61,7 @@ def club_add(requests):
 def club_list(requests):
     clubData = []
 
-    for clubId in clubNameId:
+    for clubId in [doc.id for doc in root_ref_club.stream()]:
         clubData.append(root_ref_club.document(clubId).get().to_dict())
 
     return JsonResponse({"clubData":clubData})
@@ -70,7 +70,7 @@ def my_club_list(requests):
     myClubData = []
     current_admin = requests.GET.get("admin")
 
-    for clubId in clubNameId:
+    for clubId in [doc.id for doc in root_ref_club.stream()]:
         db_admin = root_ref_club.document(clubId).get().to_dict()
         if db_admin:
             if db_admin["club_admin"] == current_admin:
