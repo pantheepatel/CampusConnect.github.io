@@ -24,10 +24,9 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-company-info">
-        <div className="footer-img">
-          {/* <img src={icon} alt="" /> */}
-          <span>Nexcent</span>
-        </div>
+      <div className="footer-form">
+        <label htmlFor="">CampusConnect</label>
+      </div>
 
         <div className="infos">
           <span>Copyright © 2020 Nexcent ltd.</span>
