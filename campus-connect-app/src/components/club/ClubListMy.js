@@ -45,11 +45,16 @@ function ClubListMy() {
                     {console.log('admin : ', item['club_admin'])}
                     {console.log('loggedin : ', JSON.parse(localStorage['user_config']).email)}
                     {console.log('user admin, ', userAdmin)}
-                    <h5>card name - {item["club_name"]}</h5>
+
+                    <div class="ml-2  p-1 flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                      <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={item['club_image']} alt=""/>
+                        <div class="flex flex-col justify-between p-4 leading-normal">
+                          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{item['club_name']}</h5>
+                          <p class="mb-3 font-normal text-gray-700">{item['club_description']}</p>
+                        </div>
+                    </div>
                     <h5>club_admin - {item["club_admin"]}</h5>
                     <h5>club_date - {item["club_date"]}</h5>
-                    <h5>club_description - {item["club_description"]}</h5>
-                    <h5>club_mainStream - {item["club_name"]}</h5>
                     {
                       userAdmin ?
                         <div>

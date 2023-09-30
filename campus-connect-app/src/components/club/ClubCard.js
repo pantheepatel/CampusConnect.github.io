@@ -1,7 +1,8 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap';
 import { Link, json } from 'react-router-dom';
-
+import LinkIcon from '@mui/icons-material/Link';
+import PersonIcon from '@mui/icons-material/Person';
 function ClubCard(props) {
   var isLoggedIn = false
   if (localStorage['user_config'] != 'null') {
@@ -15,45 +16,41 @@ function ClubCard(props) {
   return (
 
     <div>
-      <Card style={{ 'height': 'auto' }}>
-        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-        <Card.Body>
-          <Card.Title className='capitalize'>{props.name}</Card.Title>
-          {
-            console.log(props.id)
-          }
-          <Card.Text>
-            {props.admin ? <p>{props.admin}</p> : <p>no data</p>}
-            {props.date ? <p>{props.date}</p> : <p>no data</p>}
-            {props.description ? <p>{props.description}</p> : <p>no data</p>}
-
-            {/* {
-              props.image ?
-                <Card.Img src={props.image} className='h-25' />
-                :
-                <div>no image found</div>
-            }
+      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img class="w-full" src={props.image} alt="Sunset in the mountains" />
+        <div class="px-6 py-4">
+          {/* {console.log('url',props.website)} */}
+          <div className='flex flex-row justify-between'>
             {
               props.website ?
-                <p src={props.website} className='h-25' />
+                <a href={`//${props.website}`} className='curser-pointer'>
+                  <LinkIcon />
+                  <div class="font-bold text-xl mb-2">{props.name}</div>
+                </a>
                 :
-                <div>no image found sdaf</div>
-            } */}
-            <br />
-            {isLoggedIn
-              ?
-
-              <Link to={`/club/${props.id}`}>
-                <Button variant="btn btn-outline-primary outline-3">
-                  Know More
-                </Button>
-              </Link>
-              :
-              <span>astfbghjkk</span>
+                <div class="font-bold text-xl mb-2">{props.name}</div>
             }
-          </Card.Text>
-        </Card.Body>
-      </Card>
+            {/* <div>
+              <button type="button" class="btn btn-secondary z-50"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title={props.admin}>
+                <PersonIcon fontSize='30'/>
+              </button>
+            </div> */}
+          </div>
+          <div className='font-semibold py-3'>
+            <PersonIcon/> {props.admin}
+          </div>
+          <p class="text-gray-700 text-base">
+            {props.description}
+          </p>
+        </div>
+        <div class="px-6 pb-2 justify-between flex">
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{props.field}</span>
+          <span class="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{props.date}</span>
+        </div>
+      </div>
     </div>
   )
 }

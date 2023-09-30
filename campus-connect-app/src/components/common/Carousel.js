@@ -29,7 +29,7 @@ const Carousel = () => {
                   </p>
                   <p>
                     <Link class="btn btn-lg btn-primary" to="profile">
-                      Sign up today
+                      Sign In today
                     </Link>
                   </p>
                 </div>
