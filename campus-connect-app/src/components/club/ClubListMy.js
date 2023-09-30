@@ -52,13 +52,13 @@ function ClubListMy() {
                           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{item['club_name']}</h5>
                           <p class="mb-3 font-normal text-gray-700">{item['club_description']}</p>
                         </div>
+                        <br />
+                        {/* <p>Date - {item['club_date']}</p> */}
                     </div>
-                    <h5>club_admin - {item["club_admin"]}</h5>
-                    <h5>club_date - {item["club_date"]}</h5>
                     {
                       userAdmin ?
                         <div>
-                          <button className='btn btn-primary' onClick={() => setState(index)}>Edit</button>
+                          <button className='btn btn-primary' onClick={() => {setState("edit"); setItem(item)}}>Edit</button>
                           <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
                         </div>
                         :

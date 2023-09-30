@@ -22,11 +22,11 @@ const Carousel = () => {
               <img src={img2} className="d-block w-100" alt="First slide" />
               <div class="container">
                 <div class="carousel-caption text-start">
-                  <h1>Example headline.</h1>
+                  {/* <h1>Example headline.</h1>
                   <p class="opacity-75">
                     Some representative placeholder content for the first slide
                     of the carousel.
-                  </p>
+                  </p> */}
                   <p>
                     <Link class="btn btn-lg btn-primary" to="profile">
                       Sign In today
@@ -39,11 +39,11 @@ const Carousel = () => {
               <img src={img3} className="d-block w-100" alt="Second slide" />
               <div class="container">
                 <div class="carousel-caption">
-                  <h1>Another example headline.</h1>
+                  {/* <h1>Another example headline.</h1>
                   <p>
                     Some representative placeholder content for the second slide
                     of the carousel.
-                  </p>
+                  </p> */}
                   <p>
                     <Link class="btn btn-lg btn-primary" to='club'>
                       Learn more
@@ -56,11 +56,11 @@ const Carousel = () => {
               <img src={img4} className="d-block w-100" alt="First slide" />
               <div class="container">
                 <div class="carousel-caption text-end">
-                  <h1>One more for good measure.</h1>
+                  {/* <h1>One more for good measure.</h1>
                   <p>
                     Some representative placeholder content for the third slide
                     of this carousel.
-                  </p>
+                  </p> */}
                   <p>
                     {/* <a class="btn btn-lg btn-primary" href="#">
                       Browse gallery /{" "}

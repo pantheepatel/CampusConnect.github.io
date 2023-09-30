@@ -89,7 +89,7 @@ function ClubForm(props) {
         </button>
       </div>}
 
-      <form onSubmit={http_club} class="min-w-screen flex min-h-screen items-center justify-center bg-gray-900 px-5 py-5">
+      <form onSubmit={http_club} class="min-w-screen flex min-h-screen items-center justify-center bg-gray-900 px-5 py-5 my-2">
         <div class="w-full overflow-hidden rounded-3xl bg-gray-100 text-gray-500 shadow-xl" style={{ maxWidth: '1000px' }}>
           <div class="w-full md:flex">
             <div class="w-full px-5 py-10 md:px-10">

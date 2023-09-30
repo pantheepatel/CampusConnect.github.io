@@ -64,7 +64,7 @@ function UserProfileCard(props) {
                       <h2 className="mt-2">
                         <strong>{user.name}</strong>
                       </h2>
-                      <div className="d-flex gap-6">
+                      {/* <div className="d-flex gap-6">
                         {userProfile.insta ? (
                           <div>
                             <a
@@ -107,19 +107,19 @@ function UserProfileCard(props) {
                         ) : (
                           ""
                         )}
-                      </div>
+                      </div> */}
                     </div>
                     <div className="col-md-8">
                       <div className="d-flex justify-content-end w-100">
                         {/* Add the "Edit Profile" link here */}
-                        <Link to="editProfile" className="btn btn-primary">
+                        {/* <Link to="editProfile" className="btn btn-primary">
                           <EditIcon />
-                        </Link>
+                        </Link> */}
                       </div>
                       <p>
                         <EmailIcon /> <strong>Email: </strong> {user.email}
                       </p>
-                      <div className="mb-3">
+                      {/* <div className="mb-3">
                         <AutoFixHighIcon />
                         <strong>Interests:</strong>
                         <ul>
@@ -129,10 +129,10 @@ function UserProfileCard(props) {
                             </li>
                           ))}
                         </ul>
-                      </div>
-                      <div>
+                      </div> */}
+                      {/* <div>
                         <strong>Main Branch:</strong> {userProfile.main_branch}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="text-center mt-3">

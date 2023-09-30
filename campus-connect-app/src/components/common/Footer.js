@@ -29,7 +29,7 @@ const Footer = () => {
       </div>
 
         <div className="infos">
-          <span>Copyright © 2020 Nexcent ltd.</span>
+          <span>Copyright © 2023</span>
           <span>All rights reserved</span>
         </div>
         <div className="footer-icons">
