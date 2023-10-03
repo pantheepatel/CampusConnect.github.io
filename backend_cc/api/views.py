@@ -20,16 +20,15 @@ clubNameId = [doc.id for doc in root_ref_club.stream()]
 
 def authentication(requests):
     auth = requests.GET
-
     root_ref_user.document(auth.get("email")).set({
         "email": auth.get("email"),
         "name": auth.get("name"),
         "photo": auth.get("photo"),
     })
-
     return JsonResponse({
         "status": True
     })
+
 
 
 def profile(requests):
@@ -40,9 +39,9 @@ def profile(requests):
         "photo": user.get("photo"),
     })
 
+
 def club_add(requests):
     global clubNameId
-
     # bucket = storage.bucket()
     club = requests.GET
 
@@ -52,23 +51,55 @@ def club_add(requests):
     # blob.make_public()
     # print(blob.public_url)
 
-    root_ref_club.add({
-        "club_id": club.get("club_id"),
+    new_doc_ref = root_ref_club.add({
         "club_name": club.get("club_name"),
         "club_description": club.get("club_description"),
         "club_date": club.get("club_date"),
         "club_admin": club.get("club_admin"),
-        "club_image": club.get("club_image"),
-        "club_field": club.get("club_field"),
+        "club_image":club.get("club_image"),
+        "club_field":club.get("club_field"),
         "club_website": club.get("club_website"),
-
+        
         # "club_teamMember": firestore.ArrayUnion([club.get("club_teammember").split(",")])
     })
+    doc_ref=new_doc_ref[1]
+    doc_ref.update({"club_id":doc_ref.id})
+ 
+    clubNameId = [doc.id for doc in root_ref_club.stream()] # featch all clubId from firebase
 
-    # featch all clubId from firebase
-    clubNameId = [doc.id for doc in root_ref_club.stream()]
 
     return JsonResponse({"status": True})
+
+
+# def club_add(requests):
+#     global clubNameId
+
+#     # bucket = storage.bucket()
+#     club = requests.GET
+
+#     # img_name = "D:/CampusConnect Group project/CampusConnect.github.io/backend_cc/api/i.jpg"
+#     # blob = bucket.blob(img_name)
+#     # blob.upload_from_filename(img_name)
+#     # blob.make_public()
+#     # print(blob.public_url)
+
+#     root_ref_club.add({
+#         "club_id": club.get("club_id"),
+#         "club_name": club.get("club_name"),
+#         "club_description": club.get("club_description"),
+#         "club_date": club.get("club_date"),
+#         "club_admin": club.get("club_admin"),
+#         "club_image": club.get("club_image"),
+#         "club_field": club.get("club_field"),
+#         "club_website": club.get("club_website"),
+
+#         # "club_teamMember": firestore.ArrayUnion([club.get("club_teammember").split(",")])
+#     })
+
+#     # featch all clubId from firebase
+#     clubNameId = [doc.id for doc in root_ref_club.stream()]
+
+#     return JsonResponse({"status": True})
 
 
 def club_list(requests):
@@ -98,7 +129,7 @@ def my_club_list(requests):
 
 def club_edit(request):
     club = request.GET
-    root_ref_club.document(club.get("id")).set({
+    root_ref_club.document(club.get("club_id")).set({
         "club_name": club.get("club_name"),
         "club_description": club.get("club_description"),
         "club_date": club.get("club_date"),
