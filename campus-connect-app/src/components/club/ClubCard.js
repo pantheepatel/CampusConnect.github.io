@@ -16,24 +16,24 @@ function ClubCard(props) {
   return (
 
     <div>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg">
-        <img class="w-full" src={props.image} alt="Sunset in the mountains" />
-        <div class="px-6 py-4">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg my-2 bg-slate-300">
+        <img className="w-full h-72" src={props.image} alt="image not found" />
+        <div className="px-6 py-4">
           {/* {console.log('url',props.website)} */}
-          <div className='flex flex-row justify-between'>
+          <div className='flex flex-row justify-between w-full'>
             {
               props.website ?
-                <a href={`//${props.website}`} className='curser-pointer'>
-                  <LinkIcon />
-                  <div class="font-bold text-xl mb-2">{props.name}</div>
+                <a href={`//${props.website}`} className='curser-pointer flex gap-2 truncate'>
+                  <div className="font-bold text-xl mb-2">{props.name}</div>
+                  <LinkIcon className='my-1'/>
                 </a>
                 :
-                <div class="font-bold text-xl mb-2">{props.name}</div>
+                <div className="font-bold text-xl mb-2">{props.name}</div>
             }
             {/* <div>
-              <button type="button" class="btn btn-secondary z-50"
+              <button type="button" className="btn btn-secondary z-50"
                 data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip"
+                data-bs-custom-className="custom-tooltip"
                 data-bs-title={props.admin}>
                 <PersonIcon fontSize='30'/>
               </button>
@@ -42,13 +42,13 @@ function ClubCard(props) {
           <div className='font-semibold py-3'>
             <PersonIcon/> {props.admin}
           </div>
-          <p class="text-gray-700 text-base">
-            {props.description}
+          <p className="text-gray-700 text-base description" dangerouslySetInnerHTML={{__html:props.description}}>
+            {/* {props.description} */}
           </p>
         </div>
-        <div class="px-6 pb-2 justify-between flex">
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{props.field}</span>
-          <span class="inline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{props.date}</span>
+        <div className="px-6 pb-2 justify-between flex">
+          <span className="inline-block border-2 border-gray-400 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-3/5 truncate">{props.field}</span>
+          <span className="inline-block border-2 border-gray-400 bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{props.date}</span>
         </div>
       </div>
     </div>

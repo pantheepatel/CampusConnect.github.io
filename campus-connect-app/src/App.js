@@ -28,15 +28,15 @@ function App() {
         <Header></Header>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='event'>
+          {/* <Route path='event'>
             <Route path='' element={<Events />} />
             <Route path='addEvent' element={<EventForm />} />
             <Route path='myEvent' element={<EventListMy />} />
-          </Route>
+          </Route> */}
           <Route path='club'>
             <Route path='' element={<Clubs />} />
             <Route path='addClub' element={<ClubForm />} />
-            <Route path='myClub' element={<ClubListMy />} />
+            <Route path='myClub' element={<ClubListMy />} /> 
           </Route>
           <Route path='club/:id' element={<ClubDetails />} />
           <Route path='profile'>

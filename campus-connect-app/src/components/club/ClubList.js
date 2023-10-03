@@ -17,7 +17,7 @@ function ClubList() {
   }, [])
 
   return (
-    <div className='p-4'>
+    <div className=''>
       {console.log(clubData)}
       {/* <Container> */}
 

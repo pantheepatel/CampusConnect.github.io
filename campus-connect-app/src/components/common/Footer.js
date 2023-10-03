@@ -12,33 +12,29 @@ const Footer = () => {
       { label: "Pricing", key: "item-1-4" },
       { label: "Testimonials", key: "item-1-5" }
     ],
-    [
-      { label: "Support", key: "header-2" },
-      { label: "Help center", key: "item-2-1" },
-      { label: "Terms of service", key: "item-2-2" },
-      { label: "Legal", key: "item-2-3" },
-      { label: "Privacy policy", key: "item-2-4" },
-      { label: "Status", key: "item-2-5" }
-    ]
+    // [
+    //   { label: "Support", key: "header-2" },
+    //   { label: "Help center", key: "item-2-1" },
+    //   { label: "Terms of service", key: "item-2-2" },
+    //   { label: "Legal", key: "item-2-3" },
+    //   { label: "Privacy policy", key: "item-2-4" },
+    //   { label: "Status", key: "item-2-5" }
+    // ]
   ];
   return (
     <div className="footer">
       <div className="footer-company-info">
-      <div className="footer-form">
-        <label htmlFor="">CampusConnect</label>
-      </div>
-
+        <div className="footer-form">
+          <label htmlFor="">CampusConnect</label>
+        </div>
         <div className="infos">
           <span>Copyright © 2023</span>
           <span>All rights reserved</span>
         </div>
         <div className="footer-icons">
-        <FacebookIcon />
-        <InstagramIcon />
-        <LinkedInIcon/>
-        
-        
-        
+          <FacebookIcon />
+          <InstagramIcon />
+          <LinkedInIcon />
         </div>
       </div>
       <div className="footer-links">

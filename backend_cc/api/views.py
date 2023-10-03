@@ -24,13 +24,21 @@ def authentication(requests):
     root_ref_user.document(auth.get("email")).set({
         "email": auth.get("email"),
         "name": auth.get("name"),
-        "photo": auth.get("photo")
+        "photo": auth.get("photo"),
     })
 
     return JsonResponse({
         "status": True
     })
 
+
+def profile(requests):
+    user = requests.GET
+    root_ref_user.document(user.get('email')).set({
+        "email": user.get("email"),
+        "name": user.get("name"),
+        "photo": user.get("photo"),
+    })
 
 def club_add(requests):
     global clubNameId
@@ -45,7 +53,7 @@ def club_add(requests):
     # print(blob.public_url)
 
     root_ref_club.add({
-        "club_id": club.get("id"),
+        "club_id": club.get("club_id"),
         "club_name": club.get("club_name"),
         "club_description": club.get("club_description"),
         "club_date": club.get("club_date"),

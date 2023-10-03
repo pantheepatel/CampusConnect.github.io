@@ -65,7 +65,7 @@ import React from 'react'
 
 function Auth() {
   return (
-    <div>we doesnt need this file</div>
+    <div>we do nnot need this file</div>
   )
 }
 
