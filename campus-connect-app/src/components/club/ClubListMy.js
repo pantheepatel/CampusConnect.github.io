@@ -107,7 +107,7 @@ function ClubListMy() {
                               {
                                 userAdmin ?
                                   <div className='mt-3'>
-                                    <button className='btn btn-primary mr-4' onClick={() => { setState("edit"); setItem(item) }}>Edit</button>
+                                    <button className='btn btn-primary mr-4' onClick={() => {setItem(item); setState("edit");  }}>Edit</button>
                                     <button className='btn btn-danger' onClick={() => clubDelete(index)}>delete</button>
                                   </div>
                                   :

@@ -57,6 +57,7 @@ function ClubForm(props) {
           setClubImage("")
           setClubField("")
           setClubWebsite("")
+          window.location.replace('/club/myClub')
         })
         .catch(error => console.log(error))
     }
@@ -82,6 +83,7 @@ function ClubForm(props) {
           setClubImage("")
           setClubField("")
           setClubWebsite("")
+          window.location.replace('/club/myClub')
         })
         .catch(error => console.log(error))
     }
@@ -89,7 +91,7 @@ function ClubForm(props) {
 
   useEffect(() => {
     if (props.data) {
-      setClubId(props.data.club_id)
+      setClubId(props.data.id)
       setClubName(props.data.club_name)
       setClubDescription(props.data.club_description)
       setClubDate(props.data.club_date)
@@ -116,12 +118,12 @@ function ClubForm(props) {
         </button>
       </div>}
 
-      <form onSubmit={http_club} className="min-w-screen flex min-h-screen items-center justify-center bg-gray-900 px-5 py-5">
-        <div className="w-full overflow-hidden rounded-3xl bg-gray-100 text-gray-500 shadow-xl" style={{ maxWidth: '1000px' }}>
+      <form onSubmit={http_club} className="min-w-screen flex min-h-screen items-center justify-center px-5 py-5">
+        <div className="w-full overflow-hidden rounded-3xl bg-gray-100 text-gray-500 shadow-xl border-2 border-gray-500" style={{ maxWidth: '1000px' }}>
           <div className="w-full md:flex">
             <div className="w-full px-5 py-10 md:px-10">
               <div className="mb-10 text-center">
-                <h1 className="text-3xl font-bold text-gray-900">REGISTER YOUR CLUB</h1>
+                <h1 className="text-3xl font-bold text-gray-900">{props.data?'EDIT YOUR CLUB':'REGISTER YOUR CLUB'}</h1>
                 {/* <p>Enter your information to register</p> */}
               </div>
               <div>
@@ -150,10 +152,11 @@ function ClubForm(props) {
                       <div className="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i className="mdi mdi-account-outline text-lg text-gray-400"></i></div>
                       {/* <input type="text" className="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" /> */}
                       <select name="inputClubStream" value={clubField} onChange={(e) => setClubField(e.target.value)} id="inputClubStream" className="form-control -ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500">
+                        <option  selected hidden >-- Select --</option>
                         {
-                          mainFields.map((field) => {
+                          mainFields.map((field,index) => {
                             return (
-                              <option value={field} key={field}>{field}</option>
+                              <option value={field} key={index}>{field}</option>
                             )
                           })
                         }
@@ -186,9 +189,9 @@ function ClubForm(props) {
                     <label for="" className="px-1 text-xs font-semibold">Description</label>
                     <div className="flex">
                       <div className="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i className="mdi mdi-account-outline text-lg text-gray-400"></i></div>
-                      {/* <textarea value={clubDescription} onChange={(e) => setClubDescription(e.target.value)} className="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" rows={7} /> */}
+                      <textarea value={clubDescription} onChange={(e) => setClubDescription(e.target.value)} className="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" rows={7} />
                       {/* <ReactQuill ref={quillRef} theme="snow" value={value} onChange={setValue} /> */}
-                      <ReactQuill  modules={modules} theme="snow" onChange={setClubDescription} placeholder="The content starts here..." className='mt-2' />
+                      {/* <ReactQuill  modules={modules} theme="snow" value={clubDescription} onChange={(e) => setClubDescription(e.target.value)} placeholder="The content starts here..." className='mt-2' /> */}
                     </div>
                   </div>
                 </div>
