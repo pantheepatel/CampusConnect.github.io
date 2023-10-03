@@ -1,0 +1,104 @@
+.card {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 40rem;
+}
+
+.card-content {
+  position: absolute;
+  top: 20rem;
+  left: 25rem;
+  margin: auto;
+  float: left;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  color: #fff;
+  text-align: left;
+}
+
+.card-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.card-content pre {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: white;
+}
+
+.row {
+  padding: 3.2rem;
+  /* margin-left: 5rem !important; */
+  margin: auto !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* width: 98%; */
+}
+
+img {
+  object-fit: cover !important;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image {
+  flex: 1;
+  max-width: 50%;
+  /* Adjust as needed */
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 45%;
+}
+
+.container-fluid {
+  margin: auto !important;
+}
+
+.image1 {
+  flex: 1;
+  max-width: 40%;
+  /* Adjust as needed */
+}
+
+.image1 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 45%;
+}
+
+.text {
+  flex: 1;
+  max-width: 48%;
+  /* Adjust as needed */
+  padding: 20px;
+  text-align: left;
+}
+
+.text p {
+  margin-top: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+
+
+  .row {
+    flex-direction: column;
+    /* Stack elements vertically on smaller screens */
+  }
+
+  .text {
+    max-width: 80%;
+  }
+}

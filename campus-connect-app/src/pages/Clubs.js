@@ -6,25 +6,24 @@ import { Alert, Button } from 'react-bootstrap';
 
 function Clubs() {
   var isLoggedIn = false
-  if (localStorage['user_config']!='null') {
-    isLoggedIn = true 
+  if (localStorage['user_config'] != 'null') {
+    isLoggedIn = true
   }
-  
-  console.log('is user user_config?',localStorage)
-  console.log('is user?',isLoggedIn)
+
+  console.log('is user user_config?', localStorage)
+  console.log('is user?', isLoggedIn)
 
   const [show, setShow] = useState(true);
   return (
     <>
       {
         isLoggedIn ?
-          <div>
+          <div className='pt-3 px-5'>
             <Link to='addClub'>
-              <Button>Add Club</Button>
+              <Button className='mx-2'>Add Club</Button>
             </Link>
-
             <Link to='myClub'>
-              <Button>My Club</Button>
+              <Button className='mx-2'>My Club</Button>
             </Link>
           </div>
           :
@@ -34,14 +33,9 @@ function Clubs() {
             </Alert>
           </div>
       }
-
-
       <ClubList></ClubList>
       <Outlet />
-
-
     </>
-
   )
 }
 

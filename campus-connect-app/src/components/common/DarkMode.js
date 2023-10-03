@@ -11,19 +11,24 @@ export default function DarkMode() {
 
   useEffect(() => {
     const root = document.documentElement;
+    
 
     if (DarkMode) {
-      root.style.setProperty("--textwhite", "black");
-      root.style.setProperty("--textblack", "white");
-      root.style.setProperty("--db", "rgb(224, 224, 250)");
-      root.style.setProperty("--lb", "black");
-      root.style.setProperty("--blue", "white");
-    } else {
       root.style.setProperty("--textwhite", "white");
       root.style.setProperty("--textblack", "black");
-      root.style.setProperty("--db", "rgb(1, 0, 41)");
+      root.style.setProperty("--db", "#393E46");
       root.style.setProperty("--lb", "rgb(65, 230, 255)");
       root.style.setProperty("--blue", "#2b2a33");
+     
+    } else {
+      root.style.setProperty("--textwhite", "black");
+      root.style.setProperty("--textblack", "white");
+      root.style.setProperty("--db", "#E0E0E0");
+      root.style.setProperty("--lb", "black");
+      root.style.setProperty("--blue", "white");
+
+
+      
     }
   }, [DarkMode]);
 
