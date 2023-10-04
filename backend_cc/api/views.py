@@ -161,3 +161,10 @@ def userData(request):
 
     return JsonResponse(data)
 
+def club_details(request):
+    club_id=request.GET.get("club_id")
+    data=root_ref_club.document(club_id).get().to_dict()
+    print(data)
+    return JsonResponse(data)
+
+
