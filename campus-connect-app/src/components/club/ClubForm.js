@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, Outlet } from "react-router-dom";
 // import dynamic from 'next/dynamic'
@@ -20,19 +20,19 @@ function ClubForm(props) {
   const [status, setStatus] = useState(false) //for alert
   const [value, setValue] = useState("");
   const quillRef = useRef();
-  const  modules  = {
+  const modules = {
     toolbar: [
-        [{ font: [] }],
-        [{ header: [1, 2, 3, 4, 5, 6, false] }],
-        ["bold", "italic", "underline", "strike"],
-        [{ color: [] }, { background: [] }],
-        [{ script:  "sub" }, { script:  "super" }],
-        ["blockquote", "code-block"],
-        [{ list:  "ordered" }, { list:  "bullet" }],
-        ["link"], //, "image", "video"
-        ["clean"],
+      [{ font: [] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link"], //, "image", "video"
+      ["clean"],
     ],
-};
+  };
   function http_club(e) {
     e.preventDefault()
     if (props.data) {
@@ -106,14 +106,14 @@ function ClubForm(props) {
     'School of Engineering and Technology', 'School of Computer Applications', 'School of Pharmacy',
     'School of Physiotherapy', 'School of Commerce and Professional Education',
     'School of Media and Communications', 'School of Law', 'School of Design',
-    'Doctorate of Research', 'School of Planning','Other']
+    'Doctorate of Research', 'School of Planning', 'Other']
 
   return (
     <>
       {status && <div className="alert alert-success alert-dismissible fade show" role="alert">
         Club data stored successfully
         <button type="button" className="close justify-between" data-dismiss="alert" aria-label="Close">
-        <Link aria-hidden="true" to="/club">Back to clubs</Link>
+          <Link aria-hidden="true" to="/club">Back to clubs</Link>
           <span aria-hidden="true" onClick={() => setStatus(false)}>&times;</span>
         </button>
       </div>}
@@ -123,7 +123,7 @@ function ClubForm(props) {
           <div className="w-full md:flex">
             <div className="w-full px-5 py-10 md:px-10">
               <div className="mb-10 text-center">
-                <h1 className="text-3xl font-bold text-gray-900">{props.data?'EDIT YOUR CLUB':'REGISTER YOUR CLUB'}</h1>
+                <h1 className="text-3xl font-bold text-gray-900">{props.data ? 'EDIT YOUR CLUB' : 'REGISTER YOUR CLUB'}</h1>
                 {/* <p>Enter your information to register</p> */}
               </div>
               <div>
@@ -152,9 +152,9 @@ function ClubForm(props) {
                       <div className="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i className="mdi mdi-account-outline text-lg text-gray-400"></i></div>
                       {/* <input type="text" className="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" /> */}
                       <select name="inputClubStream" value={clubField} onChange={(e) => setClubField(e.target.value)} id="inputClubStream" className="form-control -ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500">
-                        <option  selected hidden >-- Select --</option>
+                        <option selected hidden >-- Select --</option>
                         {
-                          mainFields.map((field,index) => {
+                          mainFields.map((field, index) => {
                             return (
                               <option value={field} key={index}>{field}</option>
                             )
