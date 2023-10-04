@@ -108,6 +108,8 @@ def club_list(requests):
     for clubId in [doc.id for doc in root_ref_club.stream()]:
         clubData.append(root_ref_club.document(clubId).get().to_dict())
 
+    print(clubData)
+
     return JsonResponse({"clubData": clubData})
 
 
@@ -121,6 +123,7 @@ def my_club_list(requests):
             if db_admin["club_admin"] == current_admin:
                 db_admin["id"] = clubId
                 myClubData.append(db_admin)
+    print(myClubData)
 
     return JsonResponse({
         "admin_clubs": myClubData
@@ -129,7 +132,7 @@ def my_club_list(requests):
 
 def club_edit(request):
     club = request.GET
-    root_ref_club.document(club.get("club_id")).set({
+    root_ref_club.document(club.get("club_id")).update({
         "club_name": club.get("club_name"),
         "club_description": club.get("club_description"),
         "club_date": club.get("club_date"),
@@ -137,6 +140,7 @@ def club_edit(request):
         "club_image": club.get("club_image"),
         "club_website": club.get("club_website"),
         "club_field": club.get("club_field"),
+        "club_id": club.get("club_id"),
     })
 
     return JsonResponse({"status": True})
@@ -156,3 +160,11 @@ def userData(request):
     print(data)
 
     return JsonResponse(data)
+
+def club_details(request):
+    club_id=request.GET.get("club_id")
+    data=root_ref_club.document(club_id).get().to_dict()
+    print(data)
+    return JsonResponse(data)
+
+
