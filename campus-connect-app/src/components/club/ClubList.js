@@ -27,7 +27,7 @@ function ClubList() {
           clubData && clubData.length > 0 ? clubData.map((item) => {
             if (item['club_name']) {
               return (
-                <ClubCard id={item['id']} name={item['club_name']} description={item["club_description"]} image={item["club_image"]} website={item["club_website"]} team={item["club_team"]} admin={item["club_admin"]} date={item["club_date"]} field={item["club_field"]}></ClubCard>
+                <ClubCard id={item['club_id']} name={item['club_name']} description={item["club_description"]} image={item["club_image"]} website={item["club_website"]} team={item["club_team"]} admin={item["club_admin"]} date={item["club_date"]} field={item["club_field"]}></ClubCard>
               )
             }
           }) :
