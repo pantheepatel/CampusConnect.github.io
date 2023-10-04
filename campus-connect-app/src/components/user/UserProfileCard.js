@@ -112,9 +112,9 @@ function UserProfileCard(props) {
                     <div className="col-md-8">
                       <div className="d-flex justify-content-end w-100">
                         {/* Add the "Edit Profile" link here */}
-                        <Link to="editProfile" className="btn btn-primary">
+                        {/* <Link to="editProfile" className="btn btn-primary">
                           <EditIcon />
-                        </Link>
+                        </Link> */}
                       </div>
                       <p>
                         <EmailIcon /> <strong>Email: </strong> {user.email}
