@@ -21,9 +21,20 @@ clubNameId = [doc.id for doc in root_ref_club.stream()]
 def authentication(requests):
     auth = requests.GET
     root_ref_user.document(auth.get("email")).set({
-        "email": auth.get("email"),
-        "name": auth.get("name"),
-        "photo": auth.get("photo"),
+        "userName":auth.get("name"),
+        "userEmail":auth.get("email"),
+        "userImage":auth.get("photo"),
+        "userDOB":"",
+        "userBio":"",
+        "userInterest":"",
+        "userSkill":"",
+        "userField":"",
+        "userGender":"",
+        "userPhone":"",
+        "userInsta":"",
+        "userLinkedin":"",
+        "userPortfolio":"",
+        "userGraduationYear":"",
     })
     return JsonResponse({
         "status": True
@@ -155,6 +166,7 @@ def club_delete(request):
 
 def userData(request):
     user = request.GET
+    
     print("user DATA : ", user.get("email"))
     data = root_ref_user.document(user.get("email")).get().to_dict()
     print(data)
@@ -166,5 +178,47 @@ def club_details(request):
     data=root_ref_club.document(club_id).get().to_dict()
     print(data)
     return JsonResponse(data)
+
+def profile_edit(request):
+    user=request.GET
+    root_ref_user.document(user.get("userEmail")).set({
+        "userName":user.get("userName"),
+        "userEmail":user.get("userEmail"),
+        "userImage":user.get("userImage"),
+        "userDOB":user.get("userDOB"),
+        "userBio":user.get("userBio"),
+        "userInterest":user.get("userInterest"),
+        "userSkill":user.get("userSkill"),
+        "userField":user.get("userField"),
+        "userGender":user.get("userGender"),
+        "userPhone":user.get("userPhone"),
+        "userInsta":user.get("userInsta"),
+        "userLinkedin":user.get("userLinkedin"),
+        "userPortfolio":user.get("userPortfolio"),
+        "userGraduationYear":user.get("userGraduationYear"),
+         })
+    return JsonResponse({
+        "status": True
+    })
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
 
 
