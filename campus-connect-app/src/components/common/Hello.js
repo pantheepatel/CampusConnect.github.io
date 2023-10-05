@@ -10,8 +10,6 @@ function Hello() {
   return (
     <div>
       <Carousel />
-      {/* <Card /> */}
-     
       <CardC />
     </div>
   );
