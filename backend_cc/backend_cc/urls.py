@@ -13,5 +13,6 @@ urlpatterns = [
     path("club_delete/", api_view.club_delete),
     path("user_data/", api_view.userData),
     path("club_details/", api_view.club_details),
+    path("profile_edit/", api_view.profile_edit),
     
 ]
