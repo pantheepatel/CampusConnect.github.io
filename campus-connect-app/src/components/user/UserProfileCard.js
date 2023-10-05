@@ -18,31 +18,33 @@ import EditIcon from "@mui/icons-material/Edit";
 
 function UserProfileCard(props) {
 
-  let userProfile = {
-    name: props.name,
-    email: "xyz@gmail.com",
-    photo: img1, // in navbar too, display in circle format.
-    interest: ["abc", "pqr", "hao"],
-    main_branch: "Law",
-    insta: "www.instgram.com",
-    linkedin: "www.linkedin.com",
-    twitter: "www.twitter.com",
-  };
-  console.log("in profile")
+  // let userProfile = {
+  //   name: props.userName,
+  //   email: props.userEmail,
+  //   photo: props.userImage, // in navbar too, display in circle format.
+  //   interest: props.userInterest,
+  //   main_branch: "Law",
+  //   insta: "www.instgram.com",
+  //   linkedin: "www.linkedin.com",
+  //   twitter: "www.twitter.com",
+  // };
+  // console.log("in profile")
   const [user, setUser] = useState(null)
 
 
-  useEffect(() => {
-    // if local storage has data it remain as it is
-    setUser(JSON.parse(localStorage.getItem("user_config")))// so we set user info as 
+
+  useEffect(() => {// if local storage has data it remain as it is
+    setUser(props.data)// so we set user info as 
 
   }, [props])
-  const handleLogout = () => {//when we click log out userdata remove 
-    // localStorage.clear()
+
+
+  const handleLogout = () => {//when we click log out userdata remove // localStorage.clear()
     setUser(null)
     localStorage.setItem("user_config", null)// also delete from localstorage to
     window.location.reload()
   }
+
   return (
     <>
       {
@@ -54,7 +56,7 @@ function UserProfileCard(props) {
                   <div className="row">
                     <div className="col-md-4 d-flex flex-column align-items-center">
                       <img
-                        src={user.photo}
+                        src={user.userImage}
                         alt="User Profile"
                         className="img-fluid rounded-circle"
                         style={{ height: "80%", width: "80%" }}
@@ -62,13 +64,13 @@ function UserProfileCard(props) {
 
                       <br />
                       <h2 className="mt-2">
-                        <strong>{user.name}</strong>
+                        <strong>{user.userName}</strong>
                       </h2>
-                      {/* <div className="d-flex gap-6">
-                        {userProfile.insta ? (
+                      <div className="d-flex gap-6">
+                        {user.userInsta ? (
                           <div>
                             <a
-                              href={`//${userProfile.insta}`}
+                              href={`//${user.userInsta}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-decoration-none text-danger"
@@ -79,10 +81,10 @@ function UserProfileCard(props) {
                         ) : (
                           ""
                         )}
-                        {userProfile.linkedin ? (
+                        {props.userLinkedin ? (
                           <div>
                             <a
-                              href={`//${userProfile.linkedin}`}
+                              href={`//${props.userLinkedin}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-decoration-none text-primary"
@@ -93,7 +95,7 @@ function UserProfileCard(props) {
                         ) : (
                           ""
                         )}
-                        {userProfile.twitter ? (
+                        {/* {userProfile.twitter ? (
                           <div>
                             <a
                               href={`//${userProfile.twitter}`}
@@ -106,18 +108,18 @@ function UserProfileCard(props) {
                           </div>
                         ) : (
                           ""
-                        )}
-                      </div> */}
+                        )} */}
+                      </div>
                     </div>
                     <div className="col-md-8">
                       <div className="d-flex justify-content-end w-100">
                         {/* Add the "Edit Profile" link here */}
-                        {/* <Link to="editProfile" className="btn btn-primary">
+                        <Link to="editProfile" className="btn btn-primary" >
                           <EditIcon />
-                        </Link> */}
+                        </Link>
                       </div>
                       <p>
-                        <EmailIcon /> <strong>Email: </strong> {user.email}
+                        <EmailIcon /> <strong>Email: </strong> {user.userEmail}
                       </p>
                       {/* <div className="mb-3">
                         <AutoFixHighIcon />
@@ -151,6 +153,10 @@ function UserProfileCard(props) {
 }
 
 export default UserProfileCard;
+
+
+
+
 
 
 

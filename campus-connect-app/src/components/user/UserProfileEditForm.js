@@ -21,73 +21,74 @@ function UserProfileEditForm(props) {
   const [status, setStatus] = useState(false) //for alert
   const [value, setValue] = useState("");
 
-  // function http_club(e) {
-  //   e.preventDefault()
-  //   if (props.data) {
-  //     axios.get("http://127.0.0.1:8000/club_edit", { // call api request to backend to store club data
-  //       params: {
-  //         club_id: clubId,//we use json.parse bcoz in our localstorage data in string
-  //         club_name: clubName,
-  //         club_description: clubDescription,
-  //         club_date: clubDate,
-  //         club_admin: JSON.parse(localStorage.getItem("user_config"))["email"],
-  //         club_image: clubImage,
-  //         club_field: clubField,
-  //         club_website: clubWebsite,
-  //       }
-  //     })
-  //       .then(response => {
-  //         setStatus(true);
-  //         setClubId("")
-  //         setClubName("")
-  //         setClubDescription("")
-  //         setClubDate("")
-  //         setClubImage("")
-  //         setClubField("")
-  //         setClubWebsite("")
-  //         window.location.replace('/club/myClub')
-  //       })
-  //       .catch(error => console.log(error))
-  //   }
-  //   else {
-  //     axios.get("http://127.0.0.1:8000/club_add", { // call api request to backend to store club data
-  //       params: {
-  //         club_id: clubId,//we use json.parse bcoz in our localstorage data in string
-  //         club_name: clubName,
-  //         club_description: clubDescription,
-  //         club_date: clubDate,
-  //         club_admin: JSON.parse(localStorage.getItem("user_config"))["email"], //we use json.parse bcoz in our localstorage data in string
-  //         club_website: clubWebsite,
-  //         club_field: clubField,
-  //         club_image: clubImage,
-  //       }
-  //     })
-  //       .then(response => {
-  //         setStatus(true);
-  //         setClubId("")
-  //         setClubName("")
-  //         setClubDescription("")
-  //         setClubDate("")
-  //         setClubImage("")
-  //         setClubField("")
-  //         setClubWebsite("")
-  //         window.location.replace('/club/myClub')
-  //       })
-  //       .catch(error => console.log(error))
-  //   }
-  // }
+  
 
-  // useEffect(() => {
-  //   if (props.data) {
-  //     setClubId(props.data.id)
-  //     setClubName(props.data.club_name)
-  //     setClubDescription(props.data.club_description)
-  //     setClubDate(props.data.club_date)
-  //     setClubImage(props.data.club_image)
-  //     setClubField(props.data.club_field)
-  //     setClubWebsite(props.data.club_website)
-  //   }
-  // }, [])
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8000/user_data/", {
+      params: {
+        email: JSON.parse(localStorage.getItem("user_config"))["email"]
+      }
+    }).then(response =>{
+       console.log("user data info form", response.data)
+        setUserName(response.data.userName)
+        setUserEmail(response.data.userEmail)
+        setUserImage(response.data.userImage)
+        setUserDate(response.data.userDate)
+        setUserBio(response.data.userBio)
+        setUserInterest(response.data.userInterest)
+        setUserSkill(response.data.userSkill)
+        setUserField(response.data.userField)
+        setUserGender(response.data.userGender)
+        setUserPhone(response.data.userPhone)
+        setUserInsta(response.data.userInsta)
+        setUserLinkedin(response.data.userLinkedin)
+        setUserPortfolio(response.data.userPortfolio)
+        setUserGraduationYear(response.data.userGraduationYear)
+       
+       
+  }
+    ).catch((err) => console.log(err))
+  }, [])
+
+  function http_profile(e) {
+    e.preventDefault()
+      axios.get("http://127.0.0.1:8000/profile_edit", { // call api request to backend to store club data
+        params: {
+          "userName":userName,
+          "userEmail":userEmail,
+          "userImage":userImage,
+          "userDate":userDate,
+          "userBio":userBio,
+          "userInterest":userInterest,
+          "userSkill":userSkill,
+          "userField":userField,
+          "userGender":userGender,
+          "userPhone":userPhone,
+          "userInsta":userInsta,
+          "userLinkedin":userLinkedin,
+          "userPortfolio":userPortfolio,
+          "userGraduationYear":userGraduationYear,
+        }
+      })
+        .then(response => {
+          setUserName("")
+          setUserEmail("")
+          setUserImage("")
+          setUserDate("")
+          setUserBio("")
+          setUserInterest("")
+          setUserSkill("")
+          setUserField("")
+          setUserGender("")
+          setUserPhone("")
+          setUserInsta("")
+          setUserLinkedin("")
+          setUserPortfolio("")
+          setUserGraduationYear("")
+          window.location.replace('/profile')
+        })
+        .catch(error => console.log(error))
+    }
 
   // scrapped data for this, file --> scrape.ipynb in api folder
   const mainFields = ['School of Applied Sciences', 'School of Architecture', 'School of Management',
@@ -218,7 +219,7 @@ function UserProfileEditForm(props) {
                     <label for="" className="px-1 text-xs font-semibold">Interests</label>
                     <div className="flex">
                       <div className="pointer-events-none z-10 flex w-10 items-center justify-center pl-1 text-center"><i className="mdi mdi-account-outline text-lg text-gray-400"></i></div>
-                      <input type="text" value={userInterest} onChange={(e) => setUserSkill(e.target.value)} className="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" />
+                      <input type="text" value={userInterest} onChange={(e) => setUserInterest(e.target.value)} className="-ml-10 w-full rounded-lg border-2 border-gray-200 py-2 pl-10 pr-3 outline-none focus:border-indigo-500" placeholder="John" />
                     </div>
                   </div>
                 </div>
@@ -228,7 +229,7 @@ function UserProfileEditForm(props) {
 
           <div className="-mx-3 flex">
             <div className="mt-3 mb-5 w-full px-3">
-              <button className="mx-auto block w-full max-w-xs rounded-lg bg-indigo-500 px-3 py-3 font-semibold text-white hover:bg-indigo-700 focus:bg-indigo-700" type='submit'>{props.data ? "Edit" : "Save"}</button>
+              <button className="mx-auto block w-full max-w-xs rounded-lg bg-indigo-500 px-3 py-3 font-semibold text-white hover:bg-indigo-700 focus:bg-indigo-700" type='submit' onClick={http_profile}>save</button>
             </div>
           </div>
         </div>
