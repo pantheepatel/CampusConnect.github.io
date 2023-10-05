@@ -35,6 +35,49 @@ function ClubForm(props) {
   };
   function http_club(e) {
     e.preventDefault()
+    if (!clubName.trim()) {
+      alert("Club name is required.");
+      return;
+    }
+
+    if (!clubDate) {
+      alert("Start Date is required.");
+      return;
+    }
+
+    if (!clubField) {
+      alert("Field is required.");
+      return;
+    }
+
+    if (!clubImage.trim()) {
+      alert("Image URL is required.");
+      return;
+    }
+
+    if (!clubWebsite.trim()) {
+      alert("Website URL is required.");
+      return;
+    }
+
+    if (isNaN(clubName)) {
+      // Check if clubName is not a number (integer)
+      alert("Club name cannot be an integer.");
+      return;
+    }
+    
+    // URL validation
+    const urlPattern = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w.]*)*\/?$/i;
+    if (!urlPattern.test(clubImage)) {
+      alert("Invalid Image URL.");
+      return;
+    }
+
+    if (!urlPattern.test(clubWebsite)) {
+      alert("Invalid Website URL.");
+      return;
+    }
+
     if (props.data) {
       axios.get("http://127.0.0.1:8000/club_edit", { // call api request to backend to store club data
         params: {

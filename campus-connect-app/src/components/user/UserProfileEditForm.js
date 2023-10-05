@@ -8,87 +8,88 @@ function UserProfileEditForm(props) {
   const [userEmail, setUserEmail] = useState("")
   const [userImage, setUserImage] = useState("")
   const [userDate, setUserDate] = useState("")
-  const [userBio, setUserBio] = useState("") //
+  const [userBio, setUserBio] = useState("")
   const [userInterest, setUserInterest] = useState("")
   const [userSkill, setUserSkill] = useState("")
-  const [userField, setUserField] = useState("") //
-  const [userGender, setUserGender] = useState("male") //
-  const [userPhone, setUserPhone] = useState("") //
-  const [userInsta, setUserInsta] = useState("") //
-  const [userLinkedin, setUserLinkedin] = useState("") //
-  const [userPortfolio, setUserPortfolio] = useState("") //
-  const [userGraduationYear, setUserGraduationYear] = useState("") //
+  const [userField, setUserField] = useState("")
+  const [userGender, setUserGender] = useState("male")
+  const [userPhone, setUserPhone] = useState("")
+  const [userInsta, setUserInsta] = useState("")
+  const [userLinkedin, setUserLinkedin] = useState("")
+  const [userPortfolio, setUserPortfolio] = useState("")
+  const [userGraduationYear, setUserGraduationYear] = useState("")
   const [status, setStatus] = useState(false) //for alert
   const [value, setValue] = useState("");
 
-  
+
 
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/user_data/", {
       params: {
         email: JSON.parse(localStorage.getItem("user_config"))["email"]
       }
-    }).then(response =>{
-       console.log("user data info form", response.data)
-        setUserName(response.data.userName)
-        setUserEmail(response.data.userEmail)
-        setUserImage(response.data.userImage)
-        setUserDate(response.data.userDate)
-        setUserBio(response.data.userBio)
-        setUserInterest(response.data.userInterest)
-        setUserSkill(response.data.userSkill)
-        setUserField(response.data.userField)
-        setUserGender(response.data.userGender)
-        setUserPhone(response.data.userPhone)
-        setUserInsta(response.data.userInsta)
-        setUserLinkedin(response.data.userLinkedin)
-        setUserPortfolio(response.data.userPortfolio)
-        setUserGraduationYear(response.data.userGraduationYear)
-       
-       
-  }
+    }).then(response => {
+      console.log("user data info form", response.data)
+      setUserName(response.data.userName)
+      setUserEmail(response.data.userEmail)
+      setUserImage(response.data.userImage)
+      setUserDate(response.data.userDate)
+      setUserBio(response.data.userBio)
+      setUserInterest(response.data.userInterest)
+      setUserSkill(response.data.userSkill)
+      setUserField(response.data.userField)
+      setUserGender(response.data.userGender)
+      setUserPhone(response.data.userPhone)
+      setUserInsta(response.data.userInsta)
+      setUserLinkedin(response.data.userLinkedin)
+      setUserPortfolio(response.data.userPortfolio)
+      setUserGraduationYear(response.data.userGraduationYear)
+
+
+    }
     ).catch((err) => console.log(err))
   }, [])
 
   function http_profile(e) {
     e.preventDefault()
-      axios.get("http://127.0.0.1:8000/profile_edit", { // call api request to backend to store club data
-        params: {
-          "userName":userName,
-          "userEmail":userEmail,
-          "userImage":userImage,
-          "userDate":userDate,
-          "userBio":userBio,
-          "userInterest":userInterest,
-          "userSkill":userSkill,
-          "userField":userField,
-          "userGender":userGender,
-          "userPhone":userPhone,
-          "userInsta":userInsta,
-          "userLinkedin":userLinkedin,
-          "userPortfolio":userPortfolio,
-          "userGraduationYear":userGraduationYear,
-        }
+
+    axios.get("http://127.0.0.1:8000/profile_edit", { // call api request to backend to store club data
+      params: {
+        "userName": userName,
+        "userEmail": userEmail,
+        "userImage": userImage,
+        "userDate": userDate,
+        "userBio": userBio,
+        "userInterest": userInterest,
+        "userSkill": userSkill,
+        "userField": userField,
+        "userGender": userGender,
+        "userPhone": userPhone,
+        "userInsta": userInsta,
+        "userLinkedin": userLinkedin,
+        "userPortfolio": userPortfolio,
+        "userGraduationYear": userGraduationYear,
+      }
+    })
+      .then(response => {
+        setUserName("")
+        setUserEmail("")
+        setUserImage("")
+        setUserDate("")
+        setUserBio("")
+        setUserInterest("")
+        setUserSkill("")
+        setUserField("")
+        setUserGender("")
+        setUserPhone("")
+        setUserInsta("")
+        setUserLinkedin("")
+        setUserPortfolio("")
+        setUserGraduationYear("")
+        window.location.replace('/profile')
       })
-        .then(response => {
-          setUserName("")
-          setUserEmail("")
-          setUserImage("")
-          setUserDate("")
-          setUserBio("")
-          setUserInterest("")
-          setUserSkill("")
-          setUserField("")
-          setUserGender("")
-          setUserPhone("")
-          setUserInsta("")
-          setUserLinkedin("")
-          setUserPortfolio("")
-          setUserGraduationYear("")
-          window.location.replace('/profile')
-        })
-        .catch(error => console.log(error))
-    }
+      .catch(error => console.log(error))
+  }
 
   // scrapped data for this, file --> scrape.ipynb in api folder
   const mainFields = ['School of Applied Sciences', 'School of Architecture', 'School of Management',
@@ -234,7 +235,7 @@ function UserProfileEditForm(props) {
           </div>
         </div>
       </form>
-      
+
     </>
   )
 };
