@@ -81,10 +81,10 @@ function UserProfile() {
         show
           ?
           // <UserProfileCard name={user.name} email={user.email} photo={user.photo} interests={user.interests} insta={user.insta} twitter={user.twitter} linkedin={user.linkedin} field={user.field}></UserProfileCard>
-          <UserProfileCard data={user} ></UserProfileCard>
+          <UserProfileCard data={user}></UserProfileCard>
           // <UserProfileCard/>
           :
-          <button onClick={handleGoogleSignIn}>
+          <button onClick={handleGoogleSignIn} className='mt-24'>
             <h1> click here to login your account</h1>
           </button>
       }

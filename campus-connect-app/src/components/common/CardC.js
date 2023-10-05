@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 // import 'tailwindcss/stubs/defaultConfig.stub';
 import styled from "styled-components"
 import tw from "twin.macro"
 import { SectionHeading as HeadingTitle } from "./title.js";
 import Team from "./DeveloperCard/Team.js";
+import { clubData_ } from '../../services/clubService';// this import js file which we write logic of fetch api
+
+
 const Container = tw.div`relative`
 
 const SingleColumn = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -29,34 +32,46 @@ const Link = tw.a`inline-block mt-4 text-sm text-primary-500 font-bold cursor-po
 
 
 function CardC() {
-  const cards = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1550699026-4114bbf4fb49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80",
-      title: "Specialty Clubs",
-      description:
-        "Specialty clubs offer a great way to bring students together from one or multiple schools from one community to come togetherto serve. Some students form specialty clubs to provide service that aligns with their shared academic field of study, like medical program students offering healthcare support in their communities",
-      url: "https://google.com"
-    },
+  const [cards, setCardData] = useState()  //store club data 
 
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1543423924-b9f161af87e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-      title: "Music Flux",
-      description:
-        "The Music Club provides an inclusive platform to the music lovers to dip in the musical ocean, and also to participate and showcase their musical skill. It is a place where students come to jam, learn, and make music of different essence. The club conducts a variety of activities throughout the year ranging from grand intra-campus shows to fierce musical competitions, productive musical workshops to preparing students to excel in nation-wide contests.",
-      url: "https://google.com"
-    },
+  useEffect(() => {
+    // console.log('into')
+    clubData_().then(response => {
+      console.log('response', response)
+      setCardData(response.data['clubData'])
+      // setCardData(response.data["clubData"]);
+      // console.log('cards',cards)
+    })// save response in clubdata
+  }, [])
 
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1509824227185-9c5a01ceba0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80",
-      title: "Nightspear",
-      description:
-        "This dance club is to boost up the morale of students and to highlight the talent of dance and creativity.It is a great platform for those students who are passionate towards dancing. It also provides ample opportunities by conducting Dance competitions",
-      url: "https://google.com"
-    }
-  ];
+  // const cards = [
+  //   {
+  //     imageSrc:
+  //       "https://images.unsplash.com/photo-1550699026-4114bbf4fb49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80",
+  //     title: "Specialty Clubs",
+  //     description:
+  //       "Specialty clubs offer a great way to bring students together from one or multiple schools from one community to come togetherto serve. Some students form specialty clubs to provide service that aligns with their shared academic field of study, like medical program students offering healthcare support in their communities",
+  //     url: "https://google.com"
+  //   },
+
+  //   {
+  //     imageSrc:
+  //       "https://images.unsplash.com/photo-1543423924-b9f161af87e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+  //     title: "Music Flux",
+  //     description:
+  //       "The Music Club provides an inclusive platform to the music lovers to dip in the musical ocean, and also to participate and showcase their musical skill. It is a place where students come to jam, learn, and make music of different essence. The club conducts a variety of activities throughout the year ranging from grand intra-campus shows to fierce musical competitions, productive musical workshops to preparing students to excel in nation-wide contests.",
+  //     url: "https://google.com"
+  //   },
+
+  //   {
+  //     imageSrc:
+  //       "https://images.unsplash.com/photo-1509824227185-9c5a01ceba0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=658&q=80",
+  //     title: "Nightspear",
+  //     description:
+  //       "This dance club is to boost up the morale of students and to highlight the talent of dance and creativity.It is a great platform for those students who are passionate towards dancing. It also provides ample opportunities by conducting Dance competitions",
+  //     url: "https://google.com"
+  //   }
+  // ];
 
   return (
     <>
@@ -70,20 +85,21 @@ function CardC() {
           </HeadingInfoContainer>
 
           <Content>
-            {cards.map((card, i) => (
-              <Card key={i} reversed={i % 2 === 1}>
-                <Image imageSrc={card.imageSrc} />
-                <Details>
-                  <Title>{card.title}</Title>
-                  <Description>{card.description}</Description>
-                  <Link href={card.url}>See Clubs Details</Link>
-                </Details>
-              </Card>
-            ))}
+            {
+              cards.map((card, i) => (
+                <Card key={i} reversed={i % 2 === 1}>
+                  <Image imageSrc={card.club_image} />
+                  <Details>
+                    <Title>{card.club_name}</Title>
+                    <Description class='homeDes'>{card.club_description}</Description>
+                    <Link to={`/club/${card.club_id}`}>See Clubs Details</Link>
+                  </Details>
+                </Card>
+              ))
+            }
           </Content>
         </SingleColumn>
       </Container>
-
       <Team />
     </>
   );
