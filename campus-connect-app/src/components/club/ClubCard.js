@@ -44,8 +44,8 @@ function ClubCard(props) {
             <div className='font-semibold py-3'>
               <PersonIcon /> {props.admin}
             </div>
-            <p className="text-gray-700 text-base description" dangerouslySetInnerHTML={{ __html: props.description }}>
-              {/* {props.description} */}
+            <p className="text-gray-700 text-base description">
+              {props.description}
             </p>
           </div>
           <div className="px-6 pb-2 justify-between flex">

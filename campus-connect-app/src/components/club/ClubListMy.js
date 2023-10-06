@@ -5,8 +5,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Backdrop from '@mui/material/Backdrop';
 import ClubForm from './ClubForm';
 import axios from 'axios';
-import { Card, Row, Col } from 'react-bootstrap';
-import Link from '@mui/icons-material/Link';
+import { Card, Row, Col, Container } from 'react-bootstrap';
+// import Link from '@mui/icons-material/Link';
 
 function ClubListMy() {
   const [myClubData, setMyClubData] = useState(null)  //store club data 
@@ -35,7 +35,7 @@ function ClubListMy() {
 
   return (
     <div>
-      <div className='pb-2 pt-10 px-36'>
+      <div className='pb-2 pt-10 px-32'>
         <h1 className='border-4 p-2 align-middle justify-center flex'>My Clubs</h1>
       </div>
       {
@@ -60,7 +60,7 @@ function ClubListMy() {
                         var userAdmin = (item['club_admin'] === JSON.parse(localStorage['user_config']).email)
                         return (
                           <>
-                            <div className='px-36 py-3'>
+                            <div className='px-32 py-3'>
                               <Card className='p-4'>
                                 <div className='bg-slate-300 rounded-md'>
                                   <Row xs={1} md={2} className=''>

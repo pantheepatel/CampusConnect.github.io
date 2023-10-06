@@ -6,6 +6,7 @@ import { SectionHeading as HeadingTitle } from "./title.js";
 import Team from "./DeveloperCard/Team.js";
 import { clubData_ } from '../../services/clubService';// this import js file which we write logic of fetch api
 
+import { Link } from "react-router-dom";
 
 const Container = tw.div`relative`
 
@@ -28,19 +29,19 @@ const Details = tw.div`mt-4 md:mt-0 md:max-w-md mx-4 sm:mx-8 md:mx-4 lg:mx-8`;
 const Subtitle = tw.div`font-bold tracking-wide text-secondary-100`;
 const Title = tw.h4`text-3xl font-bold text-gray-900`;
 const Description = tw.p`mt-2 text-sm leading-loose`;
-const Link = tw.a`inline-block mt-4 text-sm text-primary-500 font-bold cursor-pointer transition duration-300 border-b-2 border-transparent hover:border-primary-500`;
+// const Link = tw.a`inline-block mt-4 text-sm text-primary-500 font-bold cursor-pointer transition duration-300 border-b-2 border-transparent hover:border-primary-500`;
 
 
 function CardC() {
   const [cards, setCardData] = useState()  //store club data 
-
+const[loading,setLoading]=useState(true)
   useEffect(() => {
     // console.log('into')
     clubData_().then(response => {
       console.log('response', response)
       setCardData(response.data['clubData'])
+      setLoading(false)
       // setCardData(response.data["clubData"]);
-      // console.log('cards',cards)
     })// save response in clubdata
   }, [])
 
@@ -75,6 +76,10 @@ function CardC() {
 
   return (
     <>
+    {
+      // console.log('cardstghj',cards.filter(0,3))
+
+    }
       <Container>
         <SingleColumn>
           <HeadingInfoContainer>
@@ -86,16 +91,26 @@ function CardC() {
 
           <Content>
             {
-              cards.map((card, i) => (
-                <Card key={i} reversed={i % 2 === 1}>
-                  <Image imageSrc={card.club_image} />
-                  <Details>
-                    <Title>{card.club_name}</Title>
-                    <Description class='homeDes'>{card.club_description}</Description>
-                    <Link to={`/club/${card.club_id}`}>See Clubs Details</Link>
-                  </Details>
-                </Card>
-              ))
+              loading
+
+              ?
+              
+              <div>loading...</div>
+              
+              :
+              cards && cards.slice(0,3).map((card, i) => {
+                return (
+                  <Card key={i} reversed={i % 2 === 1}>
+                    <Image imageSrc={card.club_image} />
+                    <Details>
+                      <Title>{card.club_name}</Title>
+                      <Description class='homeDes'>{card.club_description}</Description>
+                      {/* {console.log(card.club_id)} */}
+                      <Link to={`/club/${card.club_id}`}>See Clubs Details</Link>
+                    </Details>
+                  </Card>
+                )
+              })
             }
           </Content>
         </SingleColumn>

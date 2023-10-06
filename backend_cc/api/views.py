@@ -20,22 +20,26 @@ clubNameId = [doc.id for doc in root_ref_club.stream()]
 
 def authentication(requests):
     auth = requests.GET
-    root_ref_user.document(auth.get("email")).set({
-        "userName":auth.get("name"),
-        "userEmail":auth.get("email"),
-        "userImage":auth.get("photo"),
-        "userDOB":"",
-        "userBio":"",
-        "userInterest":"",
-        "userSkill":"",
-        "userField":"",
-        "userGender":"",
-        "userPhone":"",
-        "userInsta":"",
-        "userLinkedin":"",
-        "userPortfolio":"",
-        "userGraduationYear":"",
-    })
+    user=[doc.id for doc in root_ref_user.stream()]
+    if auth.get("email") in user:
+        pass
+    else:
+        root_ref_user.document(auth.get("email")).set({
+            "userName":auth.get("name"),
+            "userEmail":auth.get("email"),
+            "userImage":auth.get("photo"),
+            "userDOB":"",
+            "userBio":"",
+            "userInterest":"",
+            "userSkill":"",
+            "userField":"",
+            "userGender":"",
+            "userPhone":"",
+            "userInsta":"",
+            "userLinkedin":"",
+            "userPortfolio":"",
+            "userGraduationYear":"",
+        })
     return JsonResponse({
         "status": True
     })
