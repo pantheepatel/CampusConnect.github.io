@@ -55,28 +55,21 @@ function UserProfileCard(props) {
       {
         (userProfile != null) ?
 
-          <div className="container mt-5 " data-bs-theme="light">
+          <div className="mt-5 container" data-bs-theme="light">
             <div className="row justify-content-center">
-              <div className="col-md-8">
+              <div className="col-md-12">
                 <div className="card shadow">
                   <div className="card-body">
                     <div className="row">
                       <div className="col-md-4 d-flex flex-column align-items-center">
 
-                        <img
-                          src={userProfile.userImage}
-                          alt="User Profile"
-                          className="img-fluid rounded-circle"
-                          style={{height:'80%',width:'80%'}}
-                        />
+                        <img src={userProfile.userImage} alt="User Profile" className="img-fluid rounded-circle" style={{ height: '80%', width: '80%' }} />
                         <br />
                         <h2 className="mt-2"><strong>{userProfile.userName}</strong></h2>
                         <div>
-                          <p><strong>Gender:</strong> {userProfile.userGender}</p>
-                          <p><strong>ContactNo:</strong> {userProfile.userPhone}</p>
-                          <p><strong>Join Date:</strong> {userProfile.userDate}</p>
-                          <p><strong>Graduation Year:</strong>{userProfile.userGraduationYear}</p>
-
+                          {userProfile.userGender ? <p><strong>Gender:</strong> {userProfile.userGender}</p> : <div></div>}
+                          {userProfile.userPhone ? <p><strong>ContactNo:</strong> {userProfile.userPhone}</p> : <div></div>}
+                          {userProfile.userGraduationYear ? <p><strong>Graduation Year:</strong>{userProfile.userGraduationYear}</p> : <div></div>}
                         </div>
                         <div className='d-flex gap-6'>
                           {userProfile.insta ? (
@@ -120,32 +113,36 @@ function UserProfileCard(props) {
                       <div className="col-md-8">
                         <div className="d-flex justify-content-end w-100">
                           {/* Add the "Edit Profile" link here */}
-                          <a href="/edit-profile" className="btn btn-primary">
+                          <a href="profile/editProfile" className="btn btn-primary">
                             <EditIcon />
                           </a>
                         </div>
                         <p className='gap-2'><EmailIcon /> <strong>Email: </strong> {userProfile.userEmail}</p>
-                        {/* <p><AccountBoxIcon /><strong>User_id:</strong>{userProfile.userId}</p> */}
-                        <div className="mb-3 d-flex gap-2">
-                          <AutoFixHighIcon /><strong>Interests:</strong>
-                          {userProfile.userInterest}
-
-                          {/* {userProfile.userInterest.map((interest, index) => (
-                            <p key={index}><span className="badge bg-black "> {interest}</span></p>
-                          ))} */}
-
-                        </div>
-                        <div >
+                        {
+                          userProfile.userInterest
+                            ?
+                            <div className="mb-3 d-flex gap-2">
+                              <AutoFixHighIcon /><strong>Interests:</strong>
+                              {userProfile.userInterest}
+                            </div>
+                            :
+                            <div></div>
+                        }
+                        <div>
                           <p><DomainIcon /><strong>Main Branch:</strong> {userProfile.userField}</p>
                         </div>
                         <br />
                         <div className='d-flex gap-2'>
-                          <PsychologyAltIcon /><strong>Skill:</strong>
-                          {userProfile.userSkill}
-                          {/* {userProfile.userSkill.map((skill, index) => (
-                            <p key={index}><span className="badge bg-black "> {skill}</span></p>
-                          ))} */}
-
+                          {
+                            userProfile.userSkill
+                              ?
+                              <div>
+                                <PsychologyAltIcon /><strong>Skill: </strong>
+                                {userProfile.userSkill}
+                              </div>
+                              :
+                              <div></div>
+                          }
                         </div>
                         <br />
                         <div>

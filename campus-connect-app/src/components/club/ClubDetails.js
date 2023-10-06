@@ -50,7 +50,7 @@ function ClubDetails() {
           </div>
           :
           <div>
-            <div className='px-36 py-3'>
+            <div className='px-32 py-3'>
               <Card className='p-4'>
                 <div className='bg-slate-300 rounded-md'>
                   <Row xs={1} md={2} className=''>
@@ -65,7 +65,7 @@ function ClubDetails() {
                           {
                             clubData['club_website']
                               ?
-                              <h6 className='align-bottom my-auto'><a href={`//${clubData['club_website']}`}>Your website</a></h6>
+                              <h6 className='align-bottom my-auto'><a href={`//${clubData['club_website']}`}>Website</a></h6>
                               :
                               <span></span>
                           }

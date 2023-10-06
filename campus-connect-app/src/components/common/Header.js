@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar fixed-top">
+    <nav className="navbar">
       <div className="container">
         <div className="firsthalf">
           <h6>

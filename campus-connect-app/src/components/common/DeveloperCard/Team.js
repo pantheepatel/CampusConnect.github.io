@@ -12,8 +12,8 @@ import { ReactComponent as GithubIcon } from "./icons/github-icon.svg";
 import Panthee from '../../../assets/Panthee.jpg'
 import Yagnik from '../../../assets/Yagnik.jpg'
 import Yash from '../../../assets/Yash.jpg'
-// import Het from '../../../assets/Het.jpg'
-// import Mishva from '../../../assets/Mishva.jpg'
+import Het from '../../../assets/Het.jpg'
+import Mishva from '../../../assets/Mishva.jpg'
 
 const HeadingContainer = tw.div`-mt-20`
 const Heading = tw(SectionHeading)``
@@ -81,7 +81,7 @@ const Team = ({
       ],
     },
     {
-      imageSrc: "Het",
+      imageSrc: Het,
       position: "Designer",
       name: "Het Sojitra",
       links: [
@@ -98,7 +98,7 @@ const Team = ({
     {
       imageSrc: Yash,
       position: "Frontend Developer & designer",
-      name: "Yash Padaria",
+      name: "Yash Padariya",
       links: [
         {
           url: "https://www.linkedin.com/in/yash-padariya-22273a229",
@@ -111,14 +111,10 @@ const Team = ({
       ],
     },
     {
-      imageSrc: "Mishva",
-      position: "Sr. Developer",
-      name: "Troye Sivan",
+      imageSrc: Mishva,
+      position: "Developer",
+      name: "Mishva Khamar",
       links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
         {
           url: "https://linkedin.com",
           icon: LinkedinIcon,

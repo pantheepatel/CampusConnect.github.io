@@ -18,7 +18,7 @@ function Clubs() {
     <>
       {
         isLoggedIn ?
-          <div className='pt-3 px-5 mt-24'>
+          <div className='pt-3 px-5'>
             <Link to='addClub'>
               <Button className='mx-2'>Add Club</Button>
             </Link>
@@ -27,7 +27,7 @@ function Clubs() {
             </Link>
           </div>
           :
-          <div className='mt-24'>
+          <div>
             <Alert variant="success" className='mx-20 mt-3' onClose={() => setShow(false)} dismissible>
               <h6>login to get add and my club features!</h6>
             </Alert>

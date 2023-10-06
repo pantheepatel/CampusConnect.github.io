@@ -52,13 +52,15 @@ function UserProfile() {
           .then(response => {
             console.log("authentication --- ", response.data)
             const checkEmail = /^[0-9.]+@ljku\.edu\.in$/;
-            if (!localStorage.getItem('email').match(checkEmail)) {
-              alert('only lj email!')
-              handleLogout()
+            if (JSON.parse(localStorage.getItem("user_config"))["email"].match(checkEmail)) {
+              
+              console.log('into else')
+              window.location.replace('profile')//this is temprory
             }
             else{
-              console.log('into else')
-            window.location.reload()//this is temprory
+              alert('only lj email!')
+              handleLogout()
+              
             }
           })
           .catch(error => console.log(error))
@@ -84,7 +86,7 @@ function UserProfile() {
           <UserProfileCard data={user}></UserProfileCard>
           // <UserProfileCard/>
           :
-          <button onClick={handleGoogleSignIn} className='mt-24'>
+          <button onClick={handleGoogleSignIn}>
             <h1> click here to login your account</h1>
           </button>
       }
